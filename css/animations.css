@@ -1,0 +1,103 @@
+@keyframes bounceIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.wallpaper,
+.picture-image,
+.travel,
+.description,
+.destination {
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0, 0.5, 0, 1);
+    animation-fill-mode: both;
+}
+
+@keyframes fillUp {
+    from {
+        transform: scaleX(0);
+    }
+   to {
+        transform: scaleX(1);
+   } 
+}
+@keyframes picImage {
+    from {
+        opacity: 0;
+        transform: scale(1.2) translateY(-1rem);
+    } 
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }   
+    
+}
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-1rem);        
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+@keyframes zoomOut {
+    from {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+    to {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+}    
+.picture-image {
+    animation-duration: 750ms;
+    animation-timing-function: cubic-bezier(0, 0.5, 0.25, 1.25);
+}    
+/* Triggering the animation-name*/
+.wallpaper {
+    animation-name: zoomOut;
+    animation-timing-function: ease-out;
+}
+.picture-image {
+    animation-name: picImage;
+}
+.travel {
+    animation-name: slideDown;
+}
+.description {
+    animation-name: slideUp;
+}
+/* Delaying each animation by using a trigger delay */
+.picture-image {
+    animation-delay: 100ms;    
+}
+.travel {
+    animation-delay: 200ms;
+}
+.description {
+    animation-delay: 300ms;
+}
+.destination {
+    animation-delay: 400ms;
+}
+.wallpaper {
+    animation-delay: 500ms;
+}
