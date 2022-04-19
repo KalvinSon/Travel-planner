@@ -82,31 +82,34 @@
     <!-- To create option/checkbox--> 
    <div class="destination">
           <form>
-               <div class="input-field">
-                 <i class="material-icons prefix">date_range</i>
-                 <input type="text" id="date" class="datepicker">
-                 <label for="date">Start Date</label>
-               </div>
-               <div class="input-field">
-                  <i class="material-icons prefix">date_range</i>
-                  <input type="text" id="date" class="datepicker">
-                  <label for="date">End Date</label>
-                </div>
-               <div class="input-field">
+            <div class="input-field">
+              <i class="material-icons prefix">date_range</i>
+              <input type="date" id="startDate" class="datepicker">
+              <label for="date">Start Date</label>
+            </div>
+            <div class="input-field">
+               <i class="material-icons prefix">date_range</i>
+               <input type="date" id="endDate" class="datepicker">
+               <label for="date">End Date</label>
+             </div>
+               <div class="input-field" id="countrySelector">
                  <p>Destination</p>
-                 <p>
-                   <label>
-                     <input type="checkbox">
-                     <span>Australia</span>
-                   </label>
-                 </p>
-                 <p>
-                   <label>
-                     <input type="checkbox">
-                     <span>United States</span>
-                   </label>
-                 </p>
+                     <select id="country" name="country" style="display:block">
+                     <option value="UK">United Kingdom</option>
+                     <option value="US">United States</option>
+                 </select>
+             </div>
                </div>
+               <div class="input-field">
+                <p id="minPrice">
+                    <label for ="minPrice">Minimum Price (In AUD):</label>
+                    <input type="number" id="priceFrom"></select>
+                </p>
+                <p id="maxPrice">
+                    <label for ="maxPrice">Maximum Price (In AUD):</label>
+                    <input type="number" id="priceTo"></select>
+                </p>
+                </div>
                <div class="input-field center">
                  <button class="btn">Submit</button>
                </div>
@@ -149,8 +152,8 @@
     <!-- Compiled and minified JavaScript -->
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-   <!-- Local JS -->
+<!--
+   <!-- Local JS
    <script>
       $(document).ready(function(){
 // code goes here
@@ -160,9 +163,9 @@
         disableWeekends: false,
         yearRange: 1
       });
-
+    
    </script>
-  
+   -->
    <!-- <script src="./js/main.js"></script> -->
    
 </body>

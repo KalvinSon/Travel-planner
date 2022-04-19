@@ -105,7 +105,9 @@ a {
     margin-top: 1.5rem;
     vertical-align: text-bottom;
 }
-
+.datepicker{
+    color:white;
+}
 
 /*4. Responsiveness */
 
@@ -125,6 +127,12 @@ a {
    .header {
        min-height: 500px;
    }
+ }
+ #minPrice, #maxPrice{
+     color: white;
+ }
+ #countrySelector{
+     display:inline;
  }
 @media screen and (min-width: 671px) { 
     .content {
