@@ -3,56 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Let browser know website is optimized for mobile-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>TRAVEL PLANNER</title>
 
-    <!--Link to CSS Framework-->
-
-    <!-- Link to Local CSS-->
-
-    <!--<link rel="stylesheet" type="text/css" href="css/minireset.min.css">-->
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/animations.css">
-
-    <!-- Google Fonts --> 
-
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Quicksand" rel="stylesheet">
+    <!--CSS Materialize Framework-->
+   <!-- Compiled and minified CSS -->
+   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> 
+   
+   <!-- Google Fonts (Original Stylesheet) --> 
+  
+   <link href="https://fonts.googleapis.com/css?family=Montserrat|Quicksand" rel="stylesheet">
+   <!--Import Google Icon Font-->
+  
+  
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   
+ 
+   <!-- Link to Local stylesheet -->
+  
+   <!-- <link rel="stylesheet" type="text/css" href="css/minireset.min.css"> -->
+   <link rel="stylesheet" type="text/css" href="css/main.css">
+   <link rel="stylesheet" type="text/css" href="css/animations.css">
 
 </head>
 
 <body>
-    <!--Navbar-->
+<header>
+ 
+    <!-- navbar-->
+
+   
+    <nav class="nav-wrapper transparent">
+      <div class="container">
+        <a href="#" class="brand-logo"></a>
+        <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#">Destination</a></li>
+          <li><a href="#">Budget</a></li>
+          <li><a href="#">Exchange Rate</a></li>
+        </ul>
+        <ul class="sidenav grey lighten-2" id="mobile-menu">
+          <li><a href="#">Destination</a></li>
+          <li><a href="#">Budget</a></li>
+          <li><a href="#">Exchange Rate</a></li>
+        </ul>
+      </div>
+    </nav>  
 
 
-    
+</header> 
+        
     <!--Wall Paper and Image-->
 
-    <div class="wallpaper"></div>   
+    <div class="wallpaper"></div>
     <div class="content">
-    <aside class="side">    
+    <aside class="side">
     <figure class="picture">
     <div class="picture-shadow"></div>
-    <img id="pictureImage" class="picture-image"src="images/image02.jpg"srcset="images/image02.jpg 5x, images/image02.jpg 5x,images/image02.jpg 5x" alt="Unsplash"width="370"height="280">
+    <img id="pictureImage" class="picture-image"src="images/image02.jpg"srcset="images/image02.jpg 5x, images/image02.jpg 5x,images/image02.jpg 5x" alt="Unsplash"width="350"height="300">
     </figure>
     </aside>
-    <!--Main Content-->
-     
-    <main class="travel">
+    
+  <!-- Main Content and Search Buttons -->
+    
+    <section class="travel">
     <h1 class="planner"><strong>TRAVEL PLANNER</strong></h1>
-    <p class="subheader"></p>
-    <desc class="desc">
     <div class="description">
+
     <p>Travel is more than the seeing of sights.  It is a change that goes on, deep and permanent in the ideas of living. ~ Miriam Beard </p>
     <p>Choose your favourite destination and plan your trip!</p>
-    
-    </div>  
+    </div>
     <!-- Search Buttons-->
-    <!-- To create options-->
-    <div class="destination">
-    <a class="button" href="Choose your destination">Search</a>
+    <!-- To create option/checkbox--> 
+   <div class="destination">
+          <form>
+               <div class="input-field">
+                 <i class="material-icons prefix">date_range</i>
+                 <input type="text" id="date" class="datepicker">
+                 <label for="date">Start Date</label>
+               </div>
+               <div class="input-field">
+                  <i class="material-icons prefix">date_range</i>
+                  <input type="text" id="date" class="datepicker">
+                  <label for="date">End Date</label>
+                </div>
+               <div class="input-field">
+                 <p>Destination</p>
+                 <p>
+                   <label>
+                     <input type="checkbox">
+                     <span>Australia</span>
+                   </label>
+                 </p>
+                 <p>
+                   <label>
+                     <input type="checkbox">
+                     <span>United States</span>
+                   </label>
+                 </p>
+               </div>
+               <div class="input-field center">
+                 <button class="btn">Submit</button>
+               </div>
+             </form>
+           </div>
+         </div>
+       </section>
+
+
+
+
+
+   <!-- <input type="text" placeholder="Search..." data-dashlane-rid="2a0b02399a69fea6" data-form-type="other"> -->
+   <!-- <button class="ui button" data-dashlane-rid="6654475621185d0f" data-dashlane-label="true" data-form-type="action">Search</button> -->
+    
+   
+   </div> 
     </div>
     </main>
+      
+      
+
+   <!--Footer--> 
+   
+   <footer class="page-footer deep-purple accent-1">
+    <div class="row">
+       <div class="col s12 l6">
+          <h5 class="time-display">Time Display</h5>
+       </div>
+       <div class="col">
+          <ul> 
+             <li><a href="#" class="grey-text text-lighten-4 right">Project Group 4</a></li>
+             <li><a href="#" class="grey-text text-lighten-4 right"></a></li>
+             <li><a href="#" class="grey-text text-lighten-4 right"></a></li>
+          </ul>
+       </div>
     </div>
-    
+   </footer>
+   <!-- JS -->
+    <!-- Compiled and minified JavaScript -->
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+   <!-- Local JS -->
+   <script>
+      $(document).ready(function(){
+// code goes here
+       $('.sidenav').sidenav();
+      });
+      $('.datepicker').datepicker({
+        disableWeekends: false,
+        yearRange: 1
+      });
+
+   </script>
+  
+   <!-- <script src="./js/main.js"></script> -->
+   
 </body>
 </html>
