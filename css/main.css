@@ -1,0 +1,151 @@
+/*Base*/
+
+html {
+    background-color: #5f45bb;
+    background-image: linear-gradient(to bottom right, #7065ed, #d054e4);
+    color: #fff;
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    min-height: 100vh;
+    min-width: 300px;
+    overflow-x: hidden;
+    text-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+a {
+        color: currentColor;
+        cursor: pointer;
+        text-decoration: none;
+}
+     /* 2. Shared */
+
+.wallpaper {
+    display: block;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%  
+}
+
+/* 3. Specific */
+
+ .wallpaper { 
+    background-image: url("../images/image01.jpg"); 
+    background-position: center;
+    background-size: cover;
+    opacity: 0.2;
+    position: fixed;
+ } 
+.content {
+    display: flex;
+    position: relative;
+    min-height: 100vh;
+}
+.side {
+    max-height: 20rem;
+    max-width: 20 rem;
+}
+.picture-image {
+    border-radius: 30px;
+    /* position: absolute; */
+     
+    top: 30%;
+}
+.planner {
+    font-size: 2.25rem;
+    line-height: 1.125;
+    margin-bottom: 0.5rem;
+}
+.brand-logo{
+    font-size: small;
+}
+ 
+/* Buttons */
+.button {
+    font-family: "Montserrat", "Quicksand", sans-serif;
+    letter-spacing: 0rem;
+    text-transform: uppercase;
+    transform-origin: center;
+    transition-duration: 100ms;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1rem 2rem rgba(129, 113, 250, 0.5);
+    color: #9013fe;
+    display: inline-block;
+    font-size: 0.875rem;
+    line-height: 2;
+    width: 1000;
+    padding: 0.25em 3 em;
+    text-shadow: none;
+    transition-property: box-shadow, transform;
+    user-select: none;
+    vertical-align: top;
+    white-space:nowrap;
+    will-change:box-shadow, transform;
+}
+/* .button:hover */
+.button:hover {
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
+    transform: scale(1.02) translateY(-4px);
+}
+.button:active{
+    box-shadow: 0 0.5rem 1 rem rgba(0, 0, 0, 0.3);
+    transform: scale(0.98) translateY(-2px);
+}
+.description {
+    font-size: 1.0rem;
+}
+.destination {
+    display: inline-block;
+    margin-top: 1.0rem;
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 1.5rem;
+    vertical-align: text-bottom;
+}
+
+
+/*4. Responsiveness */
+
+ @media screen and (max-width: 670px) { 
+   .content {
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       padding: 20 rem 10 rem;
+       margin: 10px;
+      
+   }
+   .side {
+       margin-bottom: 5 rem;
+       width: 100%;
+   }
+   .header {
+       min-height: 500px;
+   }
+ }
+@media screen and (min-width: 671px) { 
+    .content {
+        align-items: top;
+        justify-content: space-around;
+        justify-content: space-evenly;
+        padding: 10rem;
+    }
+    .side {  
+        flex-grow: 0; 
+        flex-shrink: 0;
+        height: 20rem;
+        margin-left: 6 rem;
+        order: 2;
+        width: 20rem;
+    } 
+    .travel {
+        flex-grow: 2; 
+        flex-shrink: 2; 
+     }    
+}     
+
+
+
