@@ -153,7 +153,10 @@ a {
         flex-grow: 2; 
         flex-shrink: 2; 
      }    
-}     
+}
+.show{
+    display: block;
+}
 
 
 

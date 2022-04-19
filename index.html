@@ -94,36 +94,33 @@
              </div>
                <div class="input-field" id="countrySelector">
                  <p>Destination</p>
-                     <select id="country" name="country" style="display:block">
+                     <!-- <select id="country" name="country" style="display:block">
                      <option value="UK">United Kingdom</option>
                      <option value="US">United States</option>
-                 </select>
+                 </select> -->
+                 <p id="countrySearch">
+                  <label for ="countrySearch">Which Country do you want to travel:</label>
+                  <input type="text" id="countryText"></input>
+                </p>
              </div>
                </div>
                <div class="input-field">
                 <p id="minPrice">
                     <label for ="minPrice">Minimum Price (In AUD):</label>
-                    <input type="number" id="priceFrom"></select>
+                    <input type="number" id="priceFrom"></input>
                 </p>
                 <p id="maxPrice">
                     <label for ="maxPrice">Maximum Price (In AUD):</label>
-                    <input type="number" id="priceTo"></select>
+                    <input type="number" id="priceTo"></input>
                 </p>
                 </div>
-               <div class="input-field center">
+               <div class="input-field center" id="search-button">
                  <button class="btn">Submit</button>
                </div>
              </form>
            </div>
          </div>
        </section>
-
-
-
-
-
-   <!-- <input type="text" placeholder="Search..." data-dashlane-rid="2a0b02399a69fea6" data-form-type="other"> -->
-   <!-- <button class="ui button" data-dashlane-rid="6654475621185d0f" data-dashlane-label="true" data-form-type="action">Search</button> -->
     
    
    </div> 
@@ -152,21 +149,8 @@
     <!-- Compiled and minified JavaScript -->
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<!--
-   <!-- Local JS
-   <script>
-      $(document).ready(function(){
-// code goes here
-       $('.sidenav').sidenav();
-      });
-      $('.datepicker').datepicker({
-        disableWeekends: false,
-        yearRange: 1
-      });
-    
-   </script>
-   -->
-   <!-- <script src="./js/main.js"></script> -->
+
+   <script src="./js/main.js"></script>
    
 </body>
 </html>
