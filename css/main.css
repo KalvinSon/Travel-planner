@@ -1,18 +1,18 @@
 /*Base*/
 
 html {
-    background-color: #5f45bb;
-    background-image: linear-gradient(to bottom right, #7065ed, #d054e4);
-    color: #fff;
+    background-color: #94e1f8;
+    background-image: linear-gradient(to bottom right, #73b8f1, hsl(186, 14%, 40%));
+    color: rgba(0, 0, 0, 0.605);
     font-family: "Quicksand", sans-serif;
     font-size: 20px;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
-    min-height: 100vh;
+    min-height:100vh;
     min-width: 300px;
     overflow-x: hidden;
-    text-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 3px 5px rgba(1, 1, 1, 0.1);
 }
 a {
         color: currentColor;
@@ -26,26 +26,33 @@ a {
     height: 100%;
     left: 0;
     top: 0;
-    width: 100%  
+    width: 100% ;
 }
 
 /* 3. Specific */
+header {
+    font-weight: 600;
+}
 
- .wallpaper { 
-    background-image: url("../images/image01.jpg"); 
+li {
+    text-emphasis-color: black;
+}
+
+.wallpaper { 
+    background-image: url("../images/image03.jpg");
     background-position: center;
     background-size: cover;
-    opacity: 0.2;
+    opacity: 0.3;
     position: fixed;
- } 
+  }
 .content {
     display: flex;
     position: relative;
     min-height: 100vh;
 }
 .side {
-    max-height: 20rem;
-    max-width: 20 rem;
+    max-height: 30rem;
+    max-width: 30 rem;
 }
 .picture-image {
     border-radius: 30px;
@@ -59,93 +66,151 @@ a {
     margin-bottom: 0.5rem;
 }
 .brand-logo{
-    font-size: small;
+    font-size: larger;
 }
  
-/* Buttons */
-.button {
-    font-family: "Montserrat", "Quicksand", sans-serif;
-    letter-spacing: 0rem;
-    text-transform: uppercase;
-    transform-origin: center;
-    transition-duration: 100ms;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 1rem 2rem rgba(129, 113, 250, 0.5);
-    color: #9013fe;
-    display: inline-block;
-    font-size: 0.875rem;
-    line-height: 2;
-    width: 1000;
-    padding: 0.25em 3 em;
-    text-shadow: none;
-    transition-property: box-shadow, transform;
-    user-select: none;
-    vertical-align: top;
-    white-space:nowrap;
-    will-change:box-shadow, transform;
-}
-/* .button:hover */
-.button:hover {
-    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
-    transform: scale(1.02) translateY(-4px);
-}
-.button:active{
-    box-shadow: 0 0.5rem 1 rem rgba(0, 0, 0, 0.3);
-    transform: scale(0.98) translateY(-2px);
-}
-.description {
-    font-size: 1.0rem;
-}
-.destination {
-    display: inline-block;
-    margin-top: 1.0rem;
-    vertical-align: top;
-    display: inline-block;
-    margin-top: 1.5rem;
-    vertical-align: text-bottom;
+/* CSS for Search Box */
+
+
+/* Datepicker */
+
+.datepicker-date-display {
+    background-color: #257ba7;
+    font-size: 50px;
+    flex:auto;
 }
 
+.datepicker-day-button:focus {
+    color: black !important;
+    background-color: #1aacea
+}
+
+.datepicker-done,
+.datepicker-cancel,
+.select-dropdown li>span,
+.is-today {
+    color: #5199f8 !important
+}
+
+td.is-selected,
+.month-prev:active,
+.month-prev:focus,
+.month-next:active,
+.month-next:focus {
+    background-color:#257ba7 !important
+}
+
+td.is-selected.is-today {
+    color: black !important
+}
+
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+    color: #000;
+}
+/* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+    color: black !important;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid black !important;
+    box-shadow: 0 1px 0 0 black !important;
+}
+.material-icons{
+    color: #1a237e !important;
+}
+  /* changing default for material icons  */
+.material-icons.active {
+    color: black !important;
+}
+.input-field input[type=text] + label, .materialize-textarea:focus:not([readonly]) + label {
+    color: black !important;
+}
+       
+.input-field input[type=text], .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid black !important;
+    box-shadow: 0 1px 0 black !important;
+}
+            
+.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+    color: black !important;
+}
+       
+.input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid black!important;
+    box-shadow: 0 1px 0 0 black!important;
+}
+.input-field input[type]:not([readonly]),
+.input-field input[type]:focus:not([readonly]),
+.input-field textarea:not([readonly]),
+.input-field textarea:focus:not([readonly]) {
+    border-bottom: 1px solid black;
+    box-shadow: 0 1px 0 0 black;
+}
+
+label {
+    color:#000;
+}      
+    /* Submit Button  */
+.findbtn {
+    background-color:#1a237e;
+}
+
+
+.description { 
+    font-size: 1.0rem;
+} 
+.destination { 
+    display: inline-block;
+    margin-top: 1.0rem; 
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 1.5rem; 
+    vertical-align: text-bottom;
+ }
 
 /*4. Responsiveness */
 
  @media screen and (max-width: 670px) { 
-   .content {
-       flex-direction: column;
-       justify-content: center;
-       align-items: center;
-       padding: 20 rem 10 rem;
-       margin: 10px;
+.content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20 rem 10 rem;
+    margin: 10px;
       
    }
-   .side {
-       margin-bottom: 5 rem;
-       width: 100%;
+.side {
+    margin-bottom: 5 rem;
+    width: 100%;
    }
-   .header {
-       min-height: 500px;
+.header {
+    min-height: 500px;
    }
  }
 @media screen and (min-width: 671px) { 
-    .content {
-        align-items: top;
-        justify-content: space-around;
-        justify-content: space-evenly;
-        padding: 10rem;
+.content {
+    align-items: top;
+    justify-content: space-around;
+    justify-content: space-evenly;
+    padding: 10rem;
     }
-    .side {  
-        flex-grow: 0; 
-        flex-shrink: 0;
-        height: 20rem;
-        margin-left: 6 rem;
-        order: 2;
-        width: 20rem;
+.side {  
+    flex-grow: 0; 
+    flex-shrink: 0;
+    height: 20rem;
+    margin-left: 6 rem;
+    order: 2;
+    width: 20rem;
     } 
-    .travel {
-        flex-grow: 2; 
-        flex-shrink: 2; 
-     }    
-}     
-
+}
 
 
