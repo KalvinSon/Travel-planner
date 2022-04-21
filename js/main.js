@@ -1,6 +1,7 @@
 $(document).ready(function(){
     $(".dropdown-trigger").dropdown();
-
+    $("#countryText").val("");
+    $("#cityText").val("");
     //List of Countries with ISO code
     var isoCountries = {
         afghanistan: "AF",
@@ -13,6 +14,7 @@ $(document).ready(function(){
         anguilla: "AI",
         antarctica: "AQ",
         "antigua and barbuda": "AG",
+        america: "US",
         argentina: "AR",
         armenia: "AM",
         aruba: "AW",
@@ -238,6 +240,8 @@ $(document).ready(function(){
         "united arab emirates": "AE",
         "united kingdom": "GB",
         "united states": "US",
+        "usa":"US",
+        "united states of america":"US",
         "united states outlying islands": "UM",
         uruguay: "UY",
         uzbekistan: "UZ",
@@ -251,15 +255,130 @@ $(document).ready(function(){
         yemen: "YE",
         zambia: "ZM",
         zimbabwe: "ZW"
-      };
-      var search_button = $("#search-button");
-      search_button.click(function (e) { 
-          e.preventDefault();
-          e.stopPropagation();
-          var xx = $("#countryText").val();
-          alert(xx);
-      });
+    };
+    const regionNames = new Intl.DisplayNames(
+        ['en'], {type: 'region'}
+      );
+    var countryOrNot = true;
+    const countryBaseUrl = "https://app.ticketmaster.com/discovery/v2/events.json?size=1&countryCode=";
+    const cityBaseUrl = "https://app.ticketmaster.com/discovery/v2/events.json?size=1&city=";
+    const query = "&apikey=gUiVU8bG3ETIv2go0u9OVZAKqfmVvpBA";
+    var search_button = $("#search-button");
 
+
+    search_button.click(async function (e) { 
+        e.preventDefault();
+        e.stopPropagation();
+        // if country is the search parameter
+        if(countryOrNot){
+            var search_text = $("#countryText").val();
+            search_text = search_text.toLowerCase();
+            var BadResult = getCountryName(search_text) == search_text ? true : false;
+            if(!BadResult){
+                // console.log(BadResult);
+                await dataSearch(search_text);
+            }
+            else{
+                $("#countryText").val("");
+                $("#cityText").prop('disabled', false);
+                console.log("pass1");
+                alert("There are no search results for this.");
+                alert("Please Check your query parameters.");
+            }
+        }
+        //if city is the search parameter
+        else{
+            var search_text = $("#cityText").val();
+            search_text = search_text.toLowerCase();
+            await dataSearch(search_text);
+        }
+
+        
+
+    });
+
+
+
+
+    //evnetlistener of country text search change
+    $("#countryText").change(async function (e) { 
+        e.preventDefault();
+        e.stopPropagation();
+        var search_text = $("#countryText").val();
+        if(search_text.replace(" ","") == ""){
+            $("#cityText").prop('disabled', false);
+            return;
+        }
+        $("#cityText").prop('disabled', true);
+        countryOrNot = true;
+
+
+        
+    });
+    //evnetlistener of city text search change
+    $("#cityText").change(async function (e) { 
+        e.preventDefault();
+        e.stopPropagation();
+        var search_text = $("#cityText").val();
+        if(search_text.replace(" ","") == ""){
+            $("#countryText").prop('disabled', false);
+            return;
+        }
+        $("#countryText").prop('disabled', true);
+        countryOrNot = false;
+
+
+        
+    });
+
+
+
+    async function dataSearch(search_text){
+        if(countryOrNot){
+            await $.ajax({
+                    type: "get",
+                    url: countryBaseUrl+getCountryName(search_text)+query,
+                    data: "data",
+                    dataType: "JSON",
+                    success: function (response) {
+                        if(response._embedded != "" && response._embedded != null){ 
+                            console.log("pass");
+                            console.log(response._embedded);
+                            window.location.href = "./search.html?countryCode="+getCountryName(search_text);
+                        }
+                        else{
+                            $("#countryText").val("");
+                            $("#cityText").prop('disabled', false);
+                            console.log("pass2");
+                            alert("There are no search results for this.");
+                            alert("Please Check your query parameters.");
+                        }
+                }
+            });
+        }
+        else{
+            await $.ajax({
+                type: "get",
+                url: cityBaseUrl+search_text+query,
+                data: "data",
+                dataType: "JSON",
+                success: function (response) {
+                    
+                    if(response._embedded != "" && response._embedded != null){
+                        console.log("pass");
+                        console.log(response._embedded);
+                        window.location.href = "./search.html?city=" +search_text;
+                    }
+                    else{
+                        $("#cityText").val("");
+                        $("#countryText").prop('disabled', false);
+                        alert("There are no search results for this.");
+                        alert("Please Check your query parameters.");
+                    }
+                }
+            });
+        }
+    }
 
 
     //function return countrycode 
