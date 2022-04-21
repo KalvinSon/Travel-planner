@@ -62,40 +62,46 @@
        
      <!-- Main Content and Search Buttons -->
        
-         <section class="travel col s12 l3">
+         <section class="travel col s12 l3" id="travel-form">
           <!-- Search Buttons-->
          <!-- To create option/checkbox--> 
             <div class="destination">
-                  <form>
-                        <div class="input-field">
-                           <i class="material-icons prefix">date_range</i>
-                           <input type="text" id="date" class="datepicker">
-                           <label for="date">Start Date</label>
-                        </div>
-                        <div class="input-field">
-                           <i class="material-icons prefix">date_range</i>
-                           <input type="text" id="date" class="datepicker">
-                           <label for="date">End Date</label>
-                        </div>
-                        <div class="input-field">
-                           <p>Destination</p>
-                           <p>
-                              <label>
-                              <input type="checkbox">
-                              <span>Australia</span>
-                              </label>
-                           </p>
-                           <p>
-                              <label>
-                              <input type="checkbox">
-                              <span>United States</span>
-                              </label>
-                           </p>
-                        </div>
-                        <div class="input-field center">
-                           <button class="btn">Submit</button>
-                        </div>
-                  </form>
+               <form>
+                  <div class="input-field">
+                     <i class="material-icons prefix">date_range</i>
+                     <input type="date" id="startDate" class="datepicker">
+                     <label for="date">Start Date</label>
+                  </div>
+                  <div class="input-field">
+                     <i class="material-icons prefix">date_range</i>
+                     <input type="date" id="endDate" class="datepicker">
+                     <label for="date">End Date</label>
+                  </div>
+                  <div class="input-field" id="countrySelector">
+                     <p>Destination</p>
+                           <!-- <select id="country" name="country" style="display:block">
+                           <option value="UK">United Kingdom</option>
+                           <option value="US">United States</option>
+                       </select> -->
+                     <p id="countrySearch">
+                        <label for ="countrySearch">Which Country do you want to travel:</label>
+                        <input type="text" id="countryText"></input>
+                     </p>
+                  </div>
+                  <div class="input-field">
+                     <p id="minPrice">
+                        <label for ="minPrice">Minimum Price (In AUD):</label>
+                        <input type="number" id="priceFrom"></input>
+                     </p>
+                     <p id="maxPrice">
+                        <label for ="maxPrice">Maximum Price (In AUD):</label>
+                        <input type="number" id="priceTo"></input>
+                     </p>
+                     </div>
+                     <div class="input-field center" id="search-button">
+                        <button class="btn">Submit</button>
+                     </div>
+                   </form>
             </div>
          </section>
 
@@ -107,11 +113,20 @@
          </div>
 
          <div id="activities-list">
-            <div class="collection">
-               <a href="#!" class="collection-item activity-list-item">Example of an activity here</a>
-               <a href="#!" class="collection-item activity-list-item">Example of an activity here</a>
-               <a href="#!" class="collection-item activity-list-item">Example of an activity here</a>
-               <a href="#!" class="collection-item activity-list-item">Example of an activity here</a>
+            <div class="card card-content activity-card">
+               <p class="activity-title">
+                  Name of activity
+               </p>
+               <p class="activity-info">Dates: XX - XX</p>
+               <p class="activity-info">Cost: $YY</p>
+             </div>
+
+             <div class="card card-content activity-card">
+               <p class="activity-title">
+                  Name of activity
+               </p>
+               <p class="activity-info" id="activity-date">Dates: XX - XX</p>
+               <p class="activity-info" id="activity-cost">Cost: $YY</p>
              </div>
          </div>
       </section>
@@ -133,15 +148,10 @@
       
       <footer class="page-footer deep-purple accent-1">
        <div class="row">
-          <div class="col s12 l6">
-             <h5 class="time-display">Time Display</h5>
-          </div>
           <div class="col">
-             <ul> 
-                <li><a href="#" class="grey-text text-lighten-4 right">Project Group 4</a></li>
-                <li><a href="#" class="grey-text text-lighten-4 right"></a></li>
-                <li><a href="#" class="grey-text text-lighten-4 right"></a></li>
-             </ul>
+             <p> 
+               Project Group 4
+             </p>
           </div>
        </div>
       </footer>
@@ -149,19 +159,6 @@
        <!-- Compiled and minified JavaScript -->
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-   
-      <!-- Local JS -->
-      <script>
-         $(document).ready(function(){
-   // code goes here
-          $('.sidenav').sidenav();
-         });
-         $('.datepicker').datepicker({
-           disableWeekends: false,
-           yearRange: 1
-         });
-   
-      </script>
      
       <!-- <script src="./js/main.js"></script> -->
       
