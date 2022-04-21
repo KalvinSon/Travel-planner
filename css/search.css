@@ -88,6 +88,21 @@ a {
     color: #000;
     margin: 10px;
 }
+
+label {
+    color: white;
+}
+
+.btn-floating.select-activity {
+    position: absolute;
+    right: 24px;
+    bottom: 40px;
+}
+
+.btn-floating.select-activity:hover {
+    background-color: #d054e4;
+    color: #000;
+}
  
 /* Buttons */
 .button {
