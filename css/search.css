@@ -67,6 +67,27 @@ a {
 .brand-logo{
     font-size: small;
 }
+
+.input-field {
+    width: 100%;
+}
+
+.activity-card {
+    margin: 10px;
+}
+
+.activity-title {
+    font-size: 30px;
+    font-weight: bolder;
+    color: #000;
+    margin: 10px;
+}
+
+.activity-info {
+    font-size: 20px;
+    color: #000;
+    margin: 10px;
+}
  
 /* Buttons */
 .button {
@@ -114,6 +135,22 @@ a {
 
 
 /*4. Responsiveness */
+@media screen and (max-width: 992px) {
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
+
+    #travel-form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+
 
  @media screen and (max-width: 670px) { 
    .content {
