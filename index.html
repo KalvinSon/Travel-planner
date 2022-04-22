@@ -26,22 +26,22 @@
 
    <!-- <link rel="stylesheet" type="text/css" href="css/minireset.min.css"> -->
 
-   <link rel="stylesheet" type="text/css" href="css/animations.css">
+    <link rel="stylesheet" type="text/css" href="css/animations.css">
    <link rel="stylesheet" type="text/css" href="css/main.css">
-
+   <link rel="stylesheet" type="text/css" href="css/animations.css">
 </head>
 
 <body>
 
-  <!-- Header and navbar -->
+<!--navbar -->
 
 
-<header>
+<!-- <header> -->
  
-<header class="travel planner center transparent">TRAVEL PLANNER</header>
+<!-- <header class="travel planner center transparent">TRAVEL PLANNER</header> -->
 
-    <nav class="nav-wrapper transparent">
-        <a href="#" class="brand-logo center"></a>
+    <nav class="nav-wrapper cyan darken-2">
+        <a href="#" class="brand-logo center">TRAVEL PLANNER</a>
         <a href="#" class="sidenav-trigger" data-target="mobile-menu">
           <i class="material-icons">menu</i>
         </a>
@@ -50,7 +50,7 @@
           <li><a href="#">Gallery</a></li>
           <li><a href="#">To Do</a></li>
         </ul>
-        <ul class="sidenav light-blue accent-1" id="mobile-menu">
+        <ul class="sidenav" id="mobile-menu">
           <li><a href="#">Home</a></li>
           <li><a href="#">Gallery</a></li>
           <li><a href="#">To Do</a></li>
@@ -58,7 +58,6 @@
     </nav>  
 
 
-        
     <!--Wall Paper and Image-->
     
 
@@ -79,20 +78,23 @@
   <section class="travel">
       <h1 class="planner"></h1>
           <div class="description">
-               <p class="flow-text">Travel is more than the seeing of sights.  It is a change that goes on, deep and permanent in the ideas of living. ~ Miriam Beard </p>
-               <p class="flow-text">Choose your favourite destination and plan your trip!</p>
+               <p>Travel is more than the seeing of sights.  It is a change that goes on, deep and permanent in the ideas of living. ~ Miriam Beard </p>
+               <p>Choose your favourite destination and plan your trip!</p>
       </div>
      
-   <!--Input Form for Country -->
+   <!--Input for Country and City Search  -->
 
   <div class="destination">
      <form> 
-  <div class="input-field" id="countrySelector">   
-     <p id="countrySearch">
-       <label for ="countrySearch">Search for a Destination</label>
-       <input type="text" id="countryText"></input>
-   </p>
-  </div>
+      <div class="input-field" id="countrySelector">    
+         <p id="countrySearch">
+          <label for ="countrySearch">Which Country do you want to travel:</label>
+          <input type="text" id="countryText"></input> 
+        </p>
+      <p id="citysearch">
+      <label for ="citySearch">Which city do you want to travel:</label>
+      <input type="text" id="cityText"></input>
+      </p>    
 
   <!-- Input Form For Price -->
 
@@ -123,7 +125,7 @@
   <!-- Submit Button -->
 
   <button id="search-button"class="btn waves-effect waves-light" type="submit" name="action">Submit
-       <i class="material-icons right" style="color: white;" >send</i>
+       <i class="material-icons right" style="color: white" >send</i>
   </button>
        </form>  
        </div>
@@ -136,7 +138,7 @@
       
    <!--Footer--> 
    
-   <footer class="page-footer transparent">
+   <footer class="page-footer cyan-darken-2">
     <div class="row">
        <div class="col s12 l6">
           <h5 class="time-display">22 Apr 2022</h5>

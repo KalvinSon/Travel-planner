@@ -2,22 +2,22 @@
 
 html {
     background-color: #94e1f8;
-    background-image: linear-gradient(to bottom right, #73b8f1, hsl(186, 14%, 40%));
-    color: rgba(0, 0, 0, 0.605);
-    font-family: "Quicksand", sans-serif;
-    font-size: 20px;
+    background-image: linear-gradient(to bottom right, #e7fdfd, hsl(186, 14%, 40%));
+    color: rgba(7, 7, 7, 0.605);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
     min-height:100vh;
     min-width: 300px;
     overflow-x: hidden;
-    text-shadow: 0 3px 5px rgba(1, 1, 1, 0.1);
+    text-shadow: 0 3px 5px rgba(19, 19, 19, 0.1);
 }
 a {
-        color: currentColor;
-        cursor: pointer;
-        text-decoration: none;
+    color: currentColor;
+    cursor: pointer;
+    text-decoration: none;
 }
      /* 2. Shared */
 
@@ -31,21 +31,20 @@ a {
 
 /* 3. Specific */
 
-header {
-    font-weight: 500;
-    color: black;
-
+nav {
+    
+    width: 100%;
+    height: 98px;
+    line-height: 50px;
+    
 }
 
-li {
-    text-emphasis-color: black;
-}
 
 .wallpaper { 
     background-image: url("../images/image03.jpg");
     background-position: center;
     background-size: cover;
-    opacity: 0.3;
+    opacity: 12.0;
     position: fixed;
   }
 .content {
@@ -71,7 +70,16 @@ li {
 .brand-logo{
     font-size: larger;
 }
- 
+.travel {
+    background-color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    width: 400px;
+    font-size: 12px;
+    border-radius: 30px;
+} 
+
 /* CSS for Search Box */
 
 
@@ -184,7 +192,11 @@ label {
     margin-top: 1.5rem; 
     vertical-align: text-bottom;
  }
+.page-footer{
+    background-color: #0097a7;
+    padding-bottom: 20px;
 
+}
 /*4. Responsiveness */
 
  @media screen and (max-width: 670px) { 
@@ -220,8 +232,6 @@ label {
     width: 20rem;
     } 
 }
-
-
 
 .datepicker-modal {
     width: 475px;
