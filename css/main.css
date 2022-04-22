@@ -30,8 +30,11 @@ a {
 }
 
 /* 3. Specific */
+
 header {
-    font-weight: 600;
+    font-weight: 500;
+    color: black;
+
 }
 
 li {
@@ -97,7 +100,7 @@ td.is-selected,
 .month-prev:focus,
 .month-next:active,
 .month-next:focus {
-    background-color:#257ba7 !important
+    background-color:#55b7e8 !important
 }
 
 td.is-selected.is-today {
@@ -106,6 +109,7 @@ td.is-selected.is-today {
 
 
 /* label focus color */
+
 .input-field input[type=text]:focus + label {
     color: #000;
 }
@@ -120,33 +124,39 @@ td.is-selected.is-today {
 }
 
 /* label underline focus color */
+
 .input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
     border-bottom: 1px solid black !important;
-    box-shadow: 0 1px 0 0 black !important;
+    box-shadow: 0 1px 0 0 black;
 }
 .material-icons{
-    color: #1a237e !important;
+    color: black;
 }
-  /* changing default for material icons  */
+  /* changing default for material icons, label and input for price  */
+
 .material-icons.active {
-    color: black !important;
+    color: black;
 }
 .input-field input[type=text] + label, .materialize-textarea:focus:not([readonly]) + label {
-    color: black !important;
+    color: black;
 }
        
 .input-field input[type=text], .materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid black !important;
-    box-shadow: 0 1px 0 black !important;
+    border-bottom: 1px solid black;
+    box-shadow: 0 1px 0 black;
 }
             
 .input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
-    color: black !important;
+    color: black;
 }
        
 .input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid black!important;
-    box-shadow: 0 1px 0 0 black!important;
+    border-bottom: 1px solid black;
+    box-shadow: 0 1px 0 0 black; 
+}
+.input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid black;
+    box-shadow: 0 1px 0 0 black;
 }
 .input-field input[type]:not([readonly]),
 .input-field input[type]:focus:not([readonly]),
@@ -158,12 +168,10 @@ td.is-selected.is-today {
 
 label {
     color:#000;
-}      
-    /* Submit Button  */
-.findbtn {
-    background-color:#1a237e;
-}
+    
+}   
 
+/* CSS Content for travel description */
 
 .description { 
     font-size: 1.0rem;
@@ -214,3 +222,7 @@ label {
 }
 
 
+
+.datepicker-modal {
+    width: 475px;
+}
