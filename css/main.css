@@ -175,7 +175,9 @@ label {
     display: inline-block;
     margin-top: 1.5rem; 
     vertical-align: text-bottom;
+
  }
+
 
 /*4. Responsiveness */
 
@@ -196,6 +198,12 @@ label {
     min-height: 500px;
    }
  }
+ #minPrice, #maxPrice{
+     color: white;
+ }
+ #countrySelector{
+     display:inline;
+ }
 @media screen and (min-width: 671px) { 
 .content {
     align-items: top;
@@ -211,6 +219,8 @@ label {
     order: 2;
     width: 20rem;
     } 
+
 }
+
 
 

@@ -1,45 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRAVEL PLANNER | SEARCH RESULTS</title>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>TRAVEL PLANNER | SEARCH RESULTS</title>
 
-    <!-- Materialize CSS -->
+   <!--CSS Materialize Framework-->
+   <!-- Compiled and minified CSS -->
+   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   
+   <!-- Google Fonts (Original Stylesheet) --> 
+  
+   <link href="https://fonts.googleapis.com/css?family=Montserrat|Quicksand" rel="stylesheet">
+   <!--Import Google Icon Font-->
+  
+  
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   
+ 
+   <!-- Link to Local stylesheet -->
+   <link rel="stylesheet" href="./css/search.css">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
 </head>
 <body>
-    <div class="teal">
-        <h2>Mobile First Design Demo</h2>
-        <p>Resize the window to see the effect!</p>
-     </div>
-     <hr/>
-    <div class="row">
-     <div class="col m1 grey center">1</div>
-     <div class="col m1 center">2</div>
-     <div class="col m1 grey center">3</div>
-     <div class="col m1 center">4</div>
-     <div class="col m1 grey center">5</div>
-     <div class="col m1 center">6</div>
-     <div class="col m1 center grey">7</div>
-     <div class="col m1 center">8</div>
-     <div class="col m1 center grey">9</div>
-     <div class="col m1 center">10</div>
-     <div class="col m1 center grey">11</div>
-     <div class="col m1 center">12</div>
-  </div>
-  <div class="row">
-     <div class="col m4 l3 yellow">
-        <p>This text will use 12 columns on a small screen, 4 on a medium screen (m4), and 3 on a large screen (l3).</p>
-     </div>
-     <div class="col s4 m8 l9 grey">
-        <p>This text will use 4 columns on a small screen (s4), 8 on a medium screen (m8), and 9 on a large screen (l9).</p>
-     </div>
-  </div>
-</body>
-</html>
+
+   <header>
+    
+       <!-- navbar-->
+   
+      
+       <nav class="nav-wrapper transparent">
+         <div class="nav-style">
+           <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+             <i class="material-icons">menu</i>
+           </a>
+           <ul class="right hide-on-med-and-down">
+             <li><a href="#">Destination</a></li>
+             <li><a href="#">Budget</a></li>
+             <li><a href="#">Exchange Rate</a></li>
+           </ul>
+           <h1 class="planner">
+              <strong>TRAVEL PLANNER</strong>
+            </h1>
+           <ul class="sidenav grey lighten-2" id="mobile-menu">
+             <li><a href="#">Destination</a></li>
+             <li><a href="#">Budget</a></li>
+             <li><a href="#">Exchange Rate</a></li>
+           </ul>
+         </div>
+       </nav>  
+   
+   
+   </header> 
+           
+       <!--Wall Paper and Image-->
+   
+      <div class="wallpaper"></div>
+      <div class="row">
+       
+     <!-- Main Content and Search Buttons -->
+       
+         <section class="travel col s12 l3" id="travel-form">
+          <!-- Search Buttons-->
+         <!-- To create option/checkbox--> 
+            <div class="destination">
+               <form>
+                  <div class="input-field">
+                     <i class="material-icons prefix">date_range</i>
+                     <input type="date" id="startDate" class="datepicker">
+                     <label for="date">Start Date</label>
+                  </div>
+                  <div class="input-field">
+                     <i class="material-icons prefix">date_range</i>
+                     <input type="date" id="endDate" class="datepicker">
+                     <label for="date">End Date</label>
+                  </div>
+                  <div class="input-field" id="countrySelector">
+                     <p>Destination</p>
+                           <!-- <select id="country" name="country" style="display:block">
+                           <option value="UK">United Kingdom</option>
+                           <option value="US">United States</option>
+                       </select> -->
+                     <p id="countrySearch">
+                        <label for ="countrySearch">Which Country do you want to travel:</label>
+                        <input type="text" id="countryText"></input>
+                     </p>
+                  </div>
+                  <div class="input-field">
+                     <p id="minPrice">
+                        <label for ="minPrice">Minimum Price (In AUD):</label>
+                        <input type="number" id="priceFrom"></input>
+                     </p>
+                     <p id="maxPrice">
+                        <label for ="maxPrice">Maximum Price (In AUD):</label>
+                        <input type="number" id="priceTo"></input>
+                     </p>
+                     </div>
+                     <div class="input-field center" id="search-button">
+                        <button class="btn">Submit</button>
+                     </div>
+                   </form>
+            </div>
+         </section>
+
+      <section class="travel col s12 l9">
+         <div class="description">
+            <p>
+               Activities listed for <span id="country-selected">[country to be entered here]</span> between <span id="start-date-selected">[start date goes here]</span> and <span id="end-date-selected">[end date goes here]</span> within your selected price range: <span id="min-price-selected">[minimum price here]</span> - <span id="max-price-selected">[maximum price here]</span>
+            </p>
+         </div>
+
+         <div id="activities-list">
+            <div class="card card-content activity-card">
+               <p class="activity-title">
+                  Name of activity
+               </p>
+               <a class="btn-floating halfway-fab waves-effect waves-light select-activity"><i class="material-icons">add</i></a>
+               <p class="activity-info">Dates: XX - XX</p>
+               <p class="activity-info">Cost: $YY</p>
+             </div>
+
+             <div class="card card-content activity-card">
+               <p class="activity-title">
+                  Name of activity
+               </p>
+               <a class="btn-floating halfway-fab waves-effect waves-light select-activity"><i class="material-icons">add</i></a>
+               <p class="activity-info" id="activity-date">Dates: XX - XX</p>
+               <p class="activity-info" id="activity-cost">Cost: $YY</p>
+             </div>
+         </div>
+      </section>
+   
+   
+   
+   
+      <!-- <input type="text" placeholder="Search..." data-dashlane-rid="2a0b02399a69fea6" data-form-type="other"> -->
+      <!-- <button class="ui button" data-dashlane-rid="6654475621185d0f" data-dashlane-label="true" data-form-type="action">Search</button> -->
+       
+      
+      </div> 
+       </div>
+       </main>
+         
+         
+   
+      <!--Footer--> 
+      
+      <footer class="page-footer deep-purple accent-1">
+       <div class="row">
+          <div class="col">
+             <p> 
+               Project Group 4
+             </p>
+          </div>
+       </div>
+      </footer>
+      <!-- JS -->
+       <!-- Compiled and minified JavaScript -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     
+      <!-- <script src="./js/main.js"></script> -->
+      
+   </body>
+   </html>
+   

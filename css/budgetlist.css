@@ -103,6 +103,24 @@ label {
     background-color: #d054e4;
     color: #000;
 }
+
+.total-budget-card {
+    margin: 10px;
+    background-color: #9013fe;
+}
+
+.total-budget-title {
+    font-size: 30px;
+    font-weight: bolder;
+    color: #fff;
+    margin: 10px;
+}
+
+.total-budget-number {
+    font-size: 20px;
+    color: #fff;
+    margin: 10px;
+}
  
 /* Buttons */
 .button {
@@ -150,23 +168,6 @@ label {
 
 
 /*4. Responsiveness */
-@media screen and (max-width: 992px) {
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column-reverse;
-    }
-
-    #travel-form {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
-    }
-}
-
-
-
  @media screen and (max-width: 670px) { 
    .content {
        flex-direction: column;
