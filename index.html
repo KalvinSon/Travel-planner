@@ -23,133 +23,157 @@
    
  
    <!-- Link to Local stylesheet -->
-  
+
    <!-- <link rel="stylesheet" type="text/css" href="css/minireset.min.css"> -->
+
+    <link rel="stylesheet" type="text/css" href="css/animations.css">
    <link rel="stylesheet" type="text/css" href="css/main.css">
    <link rel="stylesheet" type="text/css" href="css/animations.css">
-
 </head>
 
 <body>
-<header>
- 
-    <!-- navbar-->
 
-   
-    <nav class="nav-wrapper transparent">
-      <div class="container">
-        <a href="#" class="brand-logo"></a>
+<!--navbar -->
+
+
+<!-- <header> -->
+ 
+<!-- <header class="travel planner center transparent">TRAVEL PLANNER</header> -->
+
+    <nav class="nav-wrapper cyan darken-2">
+        <a href="#" class="brand-logo center">TRAVEL PLANNER</a>
         <a href="#" class="sidenav-trigger" data-target="mobile-menu">
           <i class="material-icons">menu</i>
         </a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="#">Destination</a></li>
-          <li><a href="#">Budget</a></li>
-          <li><a href="#">Exchange Rate</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">To Do</a></li>
         </ul>
-        <ul class="sidenav grey lighten-2" id="mobile-menu">
-          <li><a href="#">Destination</a></li>
-          <li><a href="#">Budget</a></li>
-          <li><a href="#">Exchange Rate</a></li>
-        </ul>
-      </div>
+        <ul class="sidenav" id="mobile-menu">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">To Do</a></li>
+        </ul>    
     </nav>  
 
 
-</header> 
-        
     <!--Wall Paper and Image-->
+    
 
     <div class="wallpaper"></div>
-    <div class="content">
-    <aside class="side">
-    <figure class="picture">
-    <div class="picture-shadow"></div>
-    <img id="pictureImage" class="picture-image"src="images/image02.jpg"srcset="images/image02.jpg 5x, images/image02.jpg 5x,images/image02.jpg 5x" alt="Unsplash"width="350"height="300">
-    </figure>
-    </aside>
-    
-  <!-- Main Content and Search Buttons -->
-    
-    <section class="travel">
-    <h1 class="planner"><strong>TRAVEL PLANNER</strong></h1>
-    <div class="description">
 
-    <p>Travel is more than the seeing of sights.  It is a change that goes on, deep and permanent in the ideas of living. ~ Miriam Beard </p>
-    <p>Choose your favourite destination and plan your trip!</p>
-    </div>
-    <!-- Search Buttons-->
-    <!-- To create option/checkbox--> 
-   <div class="destination">
-          <form>
-            <div class="input-field">
-              <i class="material-icons prefix">date_range</i>
-              <input type="date" id="startDate" class="datepicker">
-              <label for="date">Start Date</label>
-            </div>
-            <div class="input-field">
-               <i class="material-icons prefix">date_range</i>
-               <input type="date" id="endDate" class="datepicker">
-               <label for="date">End Date</label>
-             </div>
-               <div class="input-field" id="countrySelector">
-                 <p>Destination</p>
-                 <p id="countrySearch">
-                  <label for ="countrySearch">Which Country do you want to travel:</label>
-                  <input type="text" id="countryText"></input> 
-                </p>
-              <p id="citysearch">
-              <label for ="citySearch">Which city do you want to travel:</label>
-              <input type="text" id="cityText"></input>
-              </p>
+    <!-- Image at the aside  -->
 
-             </div>
-               </div>
-               <div class="input-field">
-                <p id="minPrice">
-                    <label for ="minPrice">Minimum Price (In AUD):</label>
-                    <input type="number" id="priceFrom"></input>
-                </p>
-                <p id="maxPrice">
-                    <label for ="maxPrice">Maximum Price (In AUD):</label>
-                    <input type="number" id="priceTo"></input>
-                </p>
-                </div>
-               <div class="input-field center" id="search-button">
-                 <button class="btn">Submit</button>
-               </div>
-             </form>
-           </div>
-         </div>
-       </section>
+  <div class="content">
+       <aside class="side">
+          <figure class="picture">
+             <div class="picture-shadow"></div>
+             <img id="pictureImage" class="picture-image"src="images/image02.jpg"srcset="images/image02.jpg 5x, images/image02.jpg 5x,images/image02.jpg 5x" alt="Unsplash"width="350"height="300">
+          </figure>
+      </aside>
     
+  <!-- Introduction Section -->
+    
+  <section class="travel">
+      <h1 class="planner"></h1>
+          <div class="description">
+               <p>Travel is more than the seeing of sights.  It is a change that goes on, deep and permanent in the ideas of living. ~ Miriam Beard </p>
+               <p>Choose your favourite destination and plan your trip!</p>
+      </div>
+     
+   <!--Input for Country and City Search  -->
+
+  <div class="destination">
+     <form> 
+      <div class="input-field" id="countrySelector">    
+         <p id="countrySearch">
+          <label for ="countrySearch">Which Country do you want to travel:</label>
+          <input type="text" id="countryText"></input> 
+        </p>
+      <p id="citysearch">
+      <label for ="citySearch">Which city do you want to travel:</label>
+      <input type="text" id="cityText"></input>
+      </p>    
+
+  <!-- Input Form For Price -->
+
+  <div class="input-field">
+      <p id="minPrice">
+        <label for ="minPrice">Minimum Price (In AUD):</label>
+        <input type="number" id="priceFrom"></select>
+       </p>
+      <p id="maxPrice">
+         <label for ="maxPrice">Maximum Price (In AUD):</label>
+         <input type="number" id="priceTo"></select>
+      </p>
+  </div>
+  
+  <!-- Date Picker for Start Date and End Date -->
+
+  <div class="input-field">
+        <i class="material-icons prefix">date_range</i>
+        <input type="text" id="start-date" class="datepicker">
+        <label for="start-date">Start Date</label>
+  </div>
+  <div class="input-field">
+       <i class="material-icons prefix">date_range</i>
+       <input type="text" id="end-date" class="datepicker">
+       <label for="end-date">End Date</label>
+  </div>
    
-   </div> 
-    </div>
-    </main>
-      
-      
+  <!-- Submit Button -->
 
+  <button id="search-button"class="btn waves-effect waves-light" type="submit" name="action">Submit
+       <i class="material-icons right" style="color: white" >send</i>
+  </button>
+       </form>  
+       </div>
+     </div>
+  </section>
+
+   
+     </div> 
+   </div>
+
+      
    <!--Footer--> 
    
-   <footer class="page-footer deep-purple accent-1">
+   <footer class="page-footer cyan-darken-2">
     <div class="row">
        <div class="col s12 l6">
-          <h5 class="time-display">Time Display</h5>
-       </div>
+          <h5 class="time-display">22 Apr 2022</h5>
+     </div>
        <div class="col">
           <ul> 
              <li><a href="#" class="grey-text text-lighten-4 right">Project Group 4</a></li>
              <li><a href="#" class="grey-text text-lighten-4 right"></a></li>
              <li><a href="#" class="grey-text text-lighten-4 right"></a></li>
           </ul>
-       </div>
+        </div>   
     </div>
    </footer>
-   <!-- JS -->
-    <!-- Compiled and minified JavaScript -->
+
+  <!-- JS -->
+  <!-- Compiled and minified JavaScript -->
+
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+   <!-- Local JS -->
+   <script>
+
+      $(document).ready(function(){
+        // code goes here
+       $('.sidenav').sidenav();   
+       $('.datepicker').datepicker();
+    
+      });
+
+   </script>
+  
+
 
    <script src="./js/main.js"></script>
    

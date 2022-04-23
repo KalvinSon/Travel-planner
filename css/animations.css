@@ -10,9 +10,8 @@
 }
 .wallpaper,
 .picture-image,
-.travel,
-.description,
-.destination {
+.description
+ {
     animation-duration: 1s;
     animation-timing-function: cubic-bezier(0, 0.5, 0, 1);
     animation-fill-mode: both;
@@ -80,9 +79,8 @@
 .picture-image {
     animation-name: picImage;
 }
-.travel {
-    animation-name: slideDown;
-}
+
+
 .description {
     animation-name: slideUp;
 }
@@ -92,14 +90,10 @@
 .picture-image {
     animation-delay: 100ms;    
 }
-.travel {
-    animation-delay: 200ms;
-}
+
+
 .description {
     animation-delay: 300ms;
-}
-.destination {
-    animation-delay: 400ms;
 }
 .wallpaper {
     animation-delay: 500ms;
