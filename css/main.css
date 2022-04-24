@@ -1,14 +1,11 @@
 /*Base*/
 
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Open+Sans:wght@500;600&family=Red+Hat+Text:wght@400;700&family=Roboto:wght@100&display=swap');
+
 html {
-    background-color: #94e1f8;
-    background-image: linear-gradient(to bottom right, #e7fdfd, hsl(186, 14%, 40%));
+    
     color: rgba(7, 7, 7, 0.605);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.5;
+    font-family: 'Bree Serif', serif;
     min-height:100vh;
     min-width: 300px;
     overflow-x: hidden;
@@ -19,88 +16,67 @@ a {
     cursor: pointer;
     text-decoration: none;
 }
-     /* 2. Shared */
 
-.wallpaper {
-    display: block;
-    height: 100%;
-    left: 0;
-    top: 0;
-    width: 100% ;
+/* 2. Specific */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
-/* 3. Specific */
+main {
+    flex: 1 0 auto;
+}
 
-nav {
+nav{
     
-    width: 100%;
+     width: 100%;
     height: 98px;
     line-height: 50px;
-    
+    font-size-adjust: none;
+     }
+
+nav .brand-logo {
+    padding: 6px;
+    font-size: 2.0rem;
+
 }
 
-
-.wallpaper { 
-    background-image: url("../images/image03.jpg");
-    background-position: center;
-    background-size: cover;
-    opacity: 12.0;
-    position: fixed;
-  }
-.content {
-    display: flex;
-    position: relative;
-    min-height: 100vh;
+.slider .btn {
+    margin-top: 20px;
 }
-.side {
-    max-height: 30rem;
-    max-width: 30 rem;
+  
+.section-travel input {
+    padding: 10px !important;
+    font-size: 18px !important;
+    width: 90% !important;
+   
 }
-.picture-image {
-    border-radius: 30px;
-    /* position: absolute; */
-     
-    top: 30%;
-}
-.planner {
-    font-size: 2.25rem;
-    line-height: 1.125;
-    margin-bottom: 0.5rem;
-}
+  
 .brand-logo{
     font-size: larger;
 }
-.travel {
-    background-color: white;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 20px;
-    width: 400px;
-    font-size: 12px;
-    border-radius: 30px;
-} 
-
-/* CSS for Search Box */
 
 
 /* Datepicker */
 
 .datepicker-date-display {
-    background-color: #257ba7;
+    background-color: #26a69a;
     font-size: 50px;
     flex:auto;
 }
 
 .datepicker-day-button:focus {
-    color: black !important;
-    background-color: #1aacea
+    color: black;
+    background-color: #26a69a;
 }
 
 .datepicker-done,
 .datepicker-cancel,
 .select-dropdown li>span,
 .is-today {
-    color: #5199f8 !important
+    color: #26a69a;
 }
 
 td.is-selected,
@@ -108,131 +84,45 @@ td.is-selected,
 .month-prev:focus,
 .month-next:active,
 .month-next:focus {
-    background-color:#55b7e8 !important
+    background-color:#26a69a;
 }
 
 td.is-selected.is-today {
-    color: black !important
+    color: black;
 }
 
-
-/* label focus color */
-
-.input-field input[type=text]:focus + label {
-    color: #000;
-}
-/* label underline focus color */
-  .input-field input[type=text]:focus {
-    border-bottom: 1px solid #000;
-    box-shadow: 0 1px 0 0 #000;
-}
-/* label focus color */
-.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
-    color: black !important;
-}
-
-/* label underline focus color */
+/* CSS - Label for input */
 
 .input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid black !important;
-    box-shadow: 0 1px 0 0 black;
-}
-.material-icons{
-    color: black;
-}
-  /* changing default for material icons, label and input for price  */
+    border-bottom:lightgrey;
+    border-color: lightgray;
 
-.material-icons.active {
-    color: black;
 }
-.input-field input[type=text] + label, .materialize-textarea:focus:not([readonly]) + label {
-    color: black;
-}
-       
-.input-field input[type=text], .materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid black;
-    box-shadow: 0 1px 0 black;
-}
-            
-.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
-    color: black;
-}
-       
-.input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid black;
-    box-shadow: 0 1px 0 0 black; 
-}
-.input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid black;
-    box-shadow: 0 1px 0 0 black;
-}
-.input-field input[type]:not([readonly]),
-.input-field input[type]:focus:not([readonly]),
-.input-field textarea:not([readonly]),
-.input-field textarea:focus:not([readonly]) {
-    border-bottom: 1px solid black;
-    box-shadow: 0 1px 0 0 black;
-}
+
 
 label {
     color:#000;
+    font-size: larger;
     
 }   
 
 /* CSS Content for travel description */
 
 .description { 
-    font-size: 1.0rem;
+    font-size: 2.4rem;
+    margin-top: 6.0rem;
+    margin-bottom: auto;
+
 } 
+
 .destination { 
     display: inline-block;
-    margin-top: 1.0rem; 
+    margin-top: 3.0rem; 
     vertical-align: top;
     display: inline-block;
-    margin-top: 1.5rem; 
-    vertical-align: text-bottom;
+    margin-top: 3.0rem; 
+    font-size: larger;
+    margin-bottom: 3.0rem;
  }
-.page-footer{
-    background-color: #0097a7;
-    padding-bottom: 20px;
 
-}
-/*4. Responsiveness */
 
- @media screen and (max-width: 670px) { 
-.content {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20 rem 10 rem;
-    margin: 10px;
-      
-   }
-.side {
-    margin-bottom: 5 rem;
-    width: 100%;
-   }
-.header {
-    min-height: 500px;
-   }
- }
-@media screen and (min-width: 671px) { 
-.content {
-    align-items: top;
-    justify-content: space-around;
-    justify-content: space-evenly;
-    padding: 10rem;
-    }
-.side {  
-    flex-grow: 0; 
-    flex-shrink: 0;
-    height: 20rem;
-    margin-left: 6 rem;
-    order: 2;
-    width: 20rem;
-    } 
-}
-
-.datepicker-modal {
-    width: 475px;
-}
