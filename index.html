@@ -16,99 +16,125 @@
    <!-- Google Fonts (Original Stylesheet) --> 
   
    <link href="https://fonts.googleapis.com/css?family=Montserrat|Quicksand" rel="stylesheet">
+   
    <!--Import Google Icon Font-->
-  
+   
+   <script src="https://kit.fontawesome.com/6911252f7b.js" crossorigin="anonymous"></script>
   
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
    <!-- Import Moment library -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
    
- 
+   <!--  Fonts Awesome -->
+   
+   <script defer src="https://kit.fontawesome.com/6911252f7b.js" crossorigin="anonymous"></script>
+   
    <!-- Link to Local stylesheet -->
-
-   <!-- <link rel="stylesheet" type="text/css" href="css/minireset.min.css"> -->
-
-    <link rel="stylesheet" type="text/css" href="css/animations.css">
+ 
    <link rel="stylesheet" type="text/css" href="css/main.css">
-   <link rel="stylesheet" type="text/css" href="css/animations.css">
+ 
 </head>
 
 <body>
 
-<!--navbar -->
+<!-- Navbar -->
 
-
-<!-- <header> -->
- 
-<!-- <header class="travel planner center transparent">TRAVEL PLANNER</header> -->
-
-    <nav class="nav-wrapper cyan darken-2">
-        <a href="#" class="brand-logo center">TRAVEL PLANNER</a>
-        <a href="#" class="sidenav-trigger" data-target="mobile-menu">
-          <i class="material-icons">menu</i>
-        </a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Gallery</a></li>
-          <li><a href="#">To Do</a></li>
+<div class="navbar-fixed">
+  <nav class="teal lighten-1">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo center">TRAVEL PLANNER</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+         <ul class="right hide-on-med-and-down">
+          <li>
+            <a href="#home">Home</a>
+          </li>
+          <li>
+            <a href="#gallery">Gallery</a>
+          </li>     
         </ul>
-        <ul class="sidenav" id="mobile-menu">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Gallery</a></li>
-          <li><a href="#">To Do</a></li>
-        </ul>    
-    </nav>  
-
-
-    <!--Wall Paper and Image-->
-    
-
-    <div class="wallpaper"></div>
-
-    <!-- Image at the aside  -->
-
-  <div class="content">
-       <aside class="side">
-          <figure class="picture">
-             <div class="picture-shadow"></div>
-             <img id="pictureImage" class="picture-image"src="images/image02.jpg"srcset="images/image02.jpg 5x, images/image02.jpg 5x,images/image02.jpg 5x" alt="Unsplash"width="350"height="300">
-          </figure>
-      </aside>
-    
-  <!-- Introduction Section -->
-    
-  <section class="travel">
-      <h1 class="planner"></h1>
-          <div class="description">
-               <p>Travel is more than the seeing of sights.  It is a change that goes on, deep and permanent in the ideas of living. ~ Miriam Beard </p>
-               <p>Choose your favourite destination and plan your trip!</p>
       </div>
-     
-   <!--Input for Country and City Search  -->
+    </div>
+  </nav>
+</div>
+<ul class="sidenav" id="mobile-demo">
+  <li>
+    <a href="#home">Home</a>
+  </li> 
+  <li>
+    <a href="#gallery">Gallery</a>
+  </li>
+</ul>
+
+
+<!-- Section Slider -->
+ 
+<section class="slider">
+  <ul class="slides">
+    <li>
+      <img src="images/image08.jpg" alt="">
+      <div class="caption center-align">
+        <h4>Plan the activities because in every dreams, every detail matters!</h4>
+       
+      
+      </div>
+    </li>
+    <li>
+      <img src="images/image10.jpg" alt="">
+      <div class="caption left-align">
+        <h4>Plan the activities because in every dreams, every detail matters!</h4>
+      </div>
+    </li>
+    <li>
+      <img src="images/image12.png" alt="">
+      <div class="caption right-align">
+        <h4>Plan the activities because in every dreams, every detail matters!</h4>
+      </div>
+    </li>
+  </ul>
+</section> 
+
+ <!--Section: Search--> 
+
+  <section id="travel" class="section-travel teal lighten-4 black-text center scrollspy">
+      <div class="container">    
+      <div class="row">
+        <div class="col s12">
+        </div>
+    <h4>Search Destinations</h4>    
+      </div>
+
+   <!--Section: Input for Country and City Search  -->
 
   <div class="destination">
-     <form> 
+     <form>
       <div class="input-field" id="countrySelector">    
          <p id="countrySearch">
-          <label for ="countrySearch">Which Country do you want to travel:</label>
-          <input type="text" id="countryText"></input> 
+    
+          <input type="text" class="white grey-text autocomplete" id="countryText" placeholder="   Country of Travel or"></input>
+          <label for ="countrySearch">Which Country do you want to travel:</label> 
         </p>
       <p id="citysearch">
+      
+      <input type="text" class="white grey-text autocomplete"id="cityText" placeholder="   City of Travel"></input>
       <label for ="citySearch">Which city do you want to travel:</label>
-      <input type="text" id="cityText"></input>
       </p>    
+  </div>
 
   <!-- Input Form For Price -->
 
   <div class="input-field">
       <p id="minPrice">
+        
+        <input type="number" class="white grey-text autocomplete" id="priceFrom" placeholder="   Enter Minimum Price"></select>
         <label for ="minPrice">Minimum Price (In AUD):</label>
-        <input type="number" id="priceFrom"></select>
+
        </p>
       <p id="maxPrice">
+        
+         <input type="number" class ="white grey-text autocomplete"id="priceTo" placeholder="   Enter Maximum Price"></select>
          <label for ="maxPrice">Maximum Price (In AUD):</label>
-         <input type="number" id="priceTo"></select>
       </p>
   </div>
   
@@ -130,54 +156,99 @@
   <button id="search-button"class="btn waves-effect waves-light" type="submit" name="action">Submit
        <i class="material-icons right" style="color: white" >send</i>
   </button>
-       </form>  
+       </form>
        </div>
-     </div>
+     </div>  
+    </div>  
+   </div>
   </section>
 
-   
-     </div> 
-   </div>
 
-      
-   <!--Footer--> 
-   
-   <footer class="page-footer cyan-darken-2">
+<!-- Section: Gallery -->
+
+<section id="gallery" class="section section-gallery scrollspy">
+  <div class="container">
+    <h4 class="center">
+      <span class="teal-text">Photo </span> Gallery
+    </h4>
     <div class="row">
-       <div class="col s12 l6">
-          <h5 class="time-display">22 Apr 2022</h5>
-     </div>
-       <div class="col">
-          <ul> 
-             <li><a href="#" class="grey-text text-lighten-4 right">Project Group 4</a></li>
-             <li><a href="#" class="grey-text text-lighten-4 right"></a></li>
-             <li><a href="#" class="grey-text text-lighten-4 right"></a></li>
-          </ul>
-        </div>   
+      <div class="col s12 m3">
+        <img class="materialboxed responsive-img" src="https://source.unsplash.com/1600x900/?beach" alt="">
+      </div>
+      <div class="col s12 m3">
+        <img class="materialboxed responsive-img" src="https://source.unsplash.com/1600x900/?travel" alt="">
+      </div>
+      <div class="col s12 m3">
+        <img class="materialboxed responsive-img" src="https://source.unsplash.com/1600x900/?nature" alt="">
+      </div>
+      <div class="col s12 m3">
+        <img class="materialboxed responsive-img" src="https://source.unsplash.com/1600x900/?beach, travel" alt="">
+      </div>
     </div>
-   </footer>
 
+    <div class="row">
+      <div class="col s12 m3">
+        <img class="materialboxed responsive-img" src="https://source.unsplash.com/1600x900/?beaches" alt="">
+      </div>
+      <div class="col s12 m3">
+        <img class="materialboxed responsive-img" src="https://source.unsplash.com/1600x900/?traveling" alt="">
+      </div>
+      <div class="col s12 m3">
+        <img class="materialboxed responsive-img" src="https://source.unsplash.com/1600x900/?the great ocean road" alt="">
+      </div>
+      <div class="col s12 m3">
+        <img class="materialboxed responsive-img" src="https://source.unsplash.com/1600x900/?skydiving" alt="">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m3">
+        <img class="materialboxed responsive-img" src="https://source.unsplash.com/1600x900/?water" alt="">
+      </div>
+      <div class="col s12 m3">
+        <img class="materialboxed responsive-img" src="https://source.unsplash.com/1600x900/?canoeing" alt="">
+      </div>
+      <div class="col s12 m3">
+        <img class="materialboxed responsive-img" src="https://source.unsplash.com/1600x900/?ski" alt="">
+      </div>
+      <div class="col s12 m3">
+        <img class="materialboxed responsive-img" src="https://source.unsplash.com/1600x900/?cruise" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+   <!-- Footer -->
+
+   <footer class="section teal lighten-1 center">
+    <p class="flow-text">Project No 1 - Group 4 &copy; 2022</p>
+  </footer>  
+      
   <!-- JS -->
   <!-- Compiled and minified JavaScript -->
 
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-
    <!-- Local JS -->
    <script>
 
       $(document).ready(function(){
         // code goes here
-       $('.sidenav').sidenav();   
+        // sidenav
+       $('.sidenav').sidenav();  
+        // datepicker
        $('.datepicker').datepicker();
-    
+      //  slider
+       $('.slider').slider();
+      //  scrollspy
+       $('.scrollspy').scrollSpy();
+      //  Materialboxed
+      $('.materialboxed').materialbox();
       });
 
    </script>
   
-
-
    <script src="./js/main.js"></script>
    
 </body>
