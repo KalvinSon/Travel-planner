@@ -49,6 +49,11 @@ nav .brand-logo {
 margin-bottom: 0;
 }
 
+.event-link:hover {
+    color: #26a69a;
+    text-decoration: underline;
+}
+
 /* Datepicker */
 
 .datepicker-date-display {
