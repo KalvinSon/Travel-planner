@@ -1,75 +1,122 @@
 /*Base*/
 
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Open+Sans:wght@500;600&family=Red+Hat+Text:wght@400;700&family=Roboto:wght@100&display=swap');
+
 html {
-    background-color: #5f45bb;
-    background-image: linear-gradient(to bottom right, #7065ed, #d054e4);
-    color: #fff;
-    font-family: "Quicksand", sans-serif;
-    font-size: 20px;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.5;
-    min-height: 100vh;
+    
+    color: rgba(7, 7, 7, 0.605);
+    font-family: 'Bree Serif', serif;
+    min-height:100vh;
     min-width: 300px;
     overflow-x: hidden;
-    text-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 3px 5px rgba(19, 19, 19, 0.1);
 }
 a {
-        color: currentColor;
-        cursor: pointer;
-        text-decoration: none;
-}
-     /* 2. Shared */
-
-.wallpaper {
-    display: block;
-    height: 100%;
-    left: 0;
-    top: 0;
-    width: 100%  
+    color: currentColor;
+    cursor: pointer;
+    text-decoration: none;
 }
 
-/* 3. Specific */
-.nav-style {
-    margin: 40px;
+/* 2. Specific */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
+main {
+    flex: 1 0 auto;
+}
+
+nav{
+    width: 100%;
+    line-height: 50px;
+    font-size-adjust: none;
+}
+
+nav .brand-logo {
+    padding: 6px;
+    font-size: 2.0rem;
+
+}
+
+.row {
+margin-bottom: 0;
+}
+
+/* Datepicker */
+
+.datepicker-date-display {
+    background-color: #26a69a;
+    font-size: 50px;
+    flex:auto;
+}
+
+.datepicker-day-button:focus {
+    color: black;
+    background-color: #26a69a;
+}
+
+.datepicker-done,
+.datepicker-cancel,
+.select-dropdown li>span,
+.is-today {
+    color: #26a69a;
+}
+
+td.is-selected,
+.month-prev:active,
+.month-prev:focus,
+.month-next:active,
+.month-next:focus {
+    background-color:#26a69a;
+}
+
+td.is-selected.is-today {
+    color: black;
+}
+
+/* CSS - Label for input */
+
+.input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom:lightgrey;
+    border-color: lightgray;
+
+}
+
+
+label {
+    color:#000;
+    font-size: larger;
+    
+}   
+
+/* CSS Content for travel description */
+
+.description { 
+    font-size: 2.4rem;
+    margin-bottom: auto;
+
+} 
+
+.destination { 
+    display: inline-block;
+    margin-top: 3.0rem; 
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 3.0rem; 
+    font-size: larger;
+    margin-bottom: 3.0rem;
+ } 
+
+/* Activity list styling */
 .collection .activity-list-item {
     background-color: #fff;
     line-height: 1.5rem;
     padding: 10px 20px;
     margin: 10px 10px;
     border-bottom: 1px solid #e0e0e0;
-}
-
- .wallpaper { 
-    background-image: url("../images/image01.jpg"); 
-    background-position: center;
-    background-size: cover;
-    opacity: 0.2;
-    position: fixed;
- } 
-.content {
-    display: flex;
-    position: relative;
-    min-height: 100vh;
-}
-.side {
-    max-height: 20rem;
-    max-width: 20 rem;
-}
-
-.planner {
-    font-size: 2.25rem;
-    line-height: 1.125;
-    margin-bottom: 0.5rem;
-}
-.brand-logo{
-    font-size: small;
-}
-
-.input-field {
-    width: 100%;
 }
 
 .activity-card {
@@ -89,10 +136,6 @@ a {
     margin: 10px;
 }
 
-label {
-    color: white;
-}
-
 .btn-floating.select-activity {
     position: absolute;
     right: 24px;
@@ -100,56 +143,11 @@ label {
 }
 
 .btn-floating.select-activity:hover {
-    background-color: #d054e4;
-    color: #000;
+    background-color: #000;
 }
- 
-/* Buttons */
-.button {
-    font-family: "Montserrat", "Quicksand", sans-serif;
-    letter-spacing: 0rem;
-    text-transform: uppercase;
-    transform-origin: center;
-    transition-duration: 100ms;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 1rem 2rem rgba(129, 113, 250, 0.5);
-    color: #9013fe;
-    display: inline-block;
-    font-size: 0.875rem;
-    line-height: 2;
-    width: 1000;
-    padding: 0.25em 3 em;
-    text-shadow: none;
-    transition-property: box-shadow, transform;
-    user-select: none;
-    vertical-align: top;
-    white-space:nowrap;
-    will-change:box-shadow, transform;
-}
-/* .button:hover */
-.button:hover {
-    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
-    transform: scale(1.02) translateY(-4px);
-}
-.button:active{
-    box-shadow: 0 0.5rem 1 rem rgba(0, 0, 0, 0.3);
-    transform: scale(0.98) translateY(-2px);
-}
-.description {
-    font-size: 1.0rem;
-}
-.destination {
-    display: inline-block;
-    margin-top: 1.0rem;
-    vertical-align: top;
-    display: inline-block;
-    margin-top: 1.5rem;
-    vertical-align: text-bottom;
-}
-
 
 /*4. Responsiveness */
+/* Separate responsiveness for column reverse */
 @media screen and (max-width: 992px) {
     .row {
         display: flex;
@@ -164,8 +162,6 @@ label {
         text-align: center;
     }
 }
-
-
 
  @media screen and (max-width: 670px) { 
    .content {
