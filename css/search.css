@@ -41,6 +41,10 @@ nav .brand-logo {
 
 }
 
+.brand-logo{
+    font-size: larger;
+}
+
 .row {
 margin-bottom: 0;
 }
