@@ -100,12 +100,12 @@
                </div>
   
   <!-- Date Picker for Start Date and End Date -->
-               <div class="input-field">
+               <div class="input-field" id="start-date-container">
                   <i class="material-icons prefix">date_range</i>
                   <input type="text" id="start-date" class="datepicker">
                   <label for="start-date">Start Date</label>
                </div>
-               <div class="input-field">
+               <div class="input-field" id="end-date-container">
                   <i class="material-icons prefix">date_range</i>
                   <input type="text" id="end-date" class="datepicker">
                   <label for="end-date">End Date</label>
@@ -127,25 +127,7 @@
          </p>
       </div>
 
-      <div id="activities-list">
-         <div class="card card-content activity-card">
-            <p class="activity-title">
-               Name of activity
-            </p>
-            <a class="btn-floating halfway-fab waves-effect waves-light select-activity"><i class="material-icons">add</i></a>
-            <p class="activity-info">Dates: XX - XX</p>
-            <p class="activity-info">Cost: $YY</p>
-         </div>
-
-         <div class="card card-content activity-card">
-            <p class="activity-title">
-               Name of activity
-            </p>
-            <a class="btn-floating halfway-fab waves-effect waves-light select-activity"><i class="material-icons">add</i></a>
-            <p class="activity-info" id="activity-date">Dates: XX - XX</p>
-            <p class="activity-info" id="activity-cost">Cost: $YY</p>
-            </div>
-      </div>
+      <div id="activities-list"></div>
    </section>
    
 </div>
@@ -180,6 +162,8 @@
         });
   
      </script>
+     
+     <script src="./js/search.js"></script>
       
    </body>
    </html>
