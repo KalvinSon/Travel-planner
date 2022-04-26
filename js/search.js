@@ -268,7 +268,7 @@ $(document).ready(function(){
     const cityBaseUrl = "https://app.ticketmaster.com/discovery/v2/events.json?size=1&city=";
     const query = "&apikey=gUiVU8bG3ETIv2go0u9OVZAKqfmVvpBA";
     var search_button = $("#search-button");
-
+    firstCheck();
 // Activity list shows when page loads
 function getParams() {
     // Gets the search parameters out of the URL
@@ -379,14 +379,19 @@ function displayCountryEvents(events, toGo, index) {
         var name = activityName.text();
         var cost = activityCosts.text();
         var date = activityDate.text();
-        var link = activityLink.text();
+        var link = activityLink.attr("href");
+        // var errorMessage = $("<p></p>").addClass("error-message").text("There are no search results for this. Please try again");
+        //         $("#countrySearch").append(errorMessage);
+
         if(itemList == null){
+            $("#budget-mo").attr('href','budgetlist.html');
+            $("#budget").attr('href','budgetlist.html');
             var list = new Array();
-            list.push({"name":name,"cost":cost,"date":date,"link":link});
+            list.push({"name":name,"cost":cost,"date":date,"url":link});
             localStorage.setItem("list",JSON.stringify(list));
         }
         else{
-            itemList.push({"name":name,"cost":cost,"date":date,"link":link});
+            itemList.push({"name":name,"cost":cost,"date":date,"url":link});
             localStorage.setItem("list",JSON.stringify(itemList));
         }
     });
@@ -493,6 +498,7 @@ function displayCountryEvents(events, toGo, index) {
         var checkDate = Date.parse(currentDate) || 0;
         debugger;
         if(checkDate == 0){
+            search_button.prop('disabled', false);
             DateOrNot = false;
             return;
         }
@@ -505,12 +511,18 @@ function displayCountryEvents(events, toGo, index) {
                 if((selecteDate.getDate() >= currentDate.getDate())) {
                     search_button.prop('disabled', false);
                     DateOrNot = true;
+                   
+                }
+                else{
+                    search_button.prop('disabled', true);
+                    DateOrNot = false;
                     alert(alertMessage);
                 }
             }
             else{
                 search_button.prop('disabled', true);
                 DateOrNot = false;
+                alert(alertMessage);
             }
 
         }
@@ -554,6 +566,14 @@ function displayCountryEvents(events, toGo, index) {
         $("#countryText").prop('disabled', true);
         countryOrNot = false;        
     });
+    function firstCheck(){
+        var list = localStorage.getItem("list");
+        list = JSON.parse(list);
+        if(list == null){
+            $("#budget-mo").removeAttr('href');
+            $("#budget").removeAttr('href');
+        }
+    }
 
 
 
