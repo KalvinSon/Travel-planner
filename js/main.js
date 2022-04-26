@@ -368,7 +368,29 @@ $(document).ready(function(){
             DateOrNot = false;
             return;
         }
-        if((selecteDate.getFullYear() >= currentDate.getFullYear()) && (selecteDate.getMonth() >= currentDate.getMonth()) && (selecteDate.getDate() >= currentDate.getDate())){
+        if(checkDate == 0){
+            DateOrNot = false;
+            return;
+        }
+        if(selecteDate.getFullYear() == currentDate.getFullYear() ){
+            if(selecteDate.getMonth() > currentDate.getMonth()){
+                search_button.prop('disabled', false);
+                DateOrNot = true;
+            }
+            else if(selecteDate.getMonth() == currentDate.getMonth()) {
+                if((selecteDate.getDate() >= currentDate.getDate())) {
+                    search_button.prop('disabled', false);
+                    DateOrNot = true;
+                    alert(alertMessage);
+                }
+            }
+            else{
+                search_button.prop('disabled', true);
+                DateOrNot = false;
+            }
+
+        }
+        else if(selecteDate.getFullYear() > currentDate.getFullYear()){
             search_button.prop('disabled', false);
             DateOrNot = true;
         }
@@ -434,7 +456,11 @@ $(document).ready(function(){
                                 directUrl += "&priceFrom="+$("#priceFrom").val()+"&priceTo="+$("#priceTo").val();
                             }
                             if(DateOrNot){
-                                directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDate();
+                                var month = startDate.getMonth();
+                                console.log(month);
+                                debugger;
+                                month = parseInt(month) + 1;
+                                directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+month+"-"+startDate.getDate();
 
                             }
                             window.location.href = directUrl;
@@ -466,7 +492,9 @@ $(document).ready(function(){
                             directUrl += "&priceFrom="+$("#priceFrom").val()+"&priceTo="+$("#priceTo").val();
                         }
                         if(DateOrNot){
-                            directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDate();
+                            var month = startDate.getMonth();
+                            month = parseInt(month) + 1;
+                            directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+month+"-"+startDate.getDate();
                         }
 
                         window.location.href = directUrl;
