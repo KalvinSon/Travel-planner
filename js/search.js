@@ -272,18 +272,77 @@ $(document).ready(function(){
 // Activity list shows when page loads
 function getParams() {
     // Gets the search parameters out of the URL
-    var searchParamsArray = document.location.search.split("&");
-
+    // var searchParamsArray = document.location.search.split("&");
+    var queryString = document.location.search;
+    const urlParams = new URLSearchParams(queryString);
     // Query value
-    var country = searchParamsArray[0].split('=').pop();
+    var city = urlParams.get("city");
+    console.log(city);
+    var country = urlParams.get("countryCode");
+    console.log(country);
+    var priceFrom = urlParams.get("priceFrom");
+    console.log(priceFrom);
+    var priceTo = urlParams.get("priceTo");
+    console.log(priceTo);
+    var dateFrom = urlParams.get("startDateTime");
+    console.log(dateFrom);
+    var dateTo = urlParams.get("endDateTime");
+    console.log(dateTo);
+    searchApi(city,country,priceFrom,priceTo,dateFrom,dateTo);
 
-    searchApi(country);
 }
 
-function searchApi(country) {
-    var countryQueryUrl = "https://app.ticketmaster.com/discovery/v2/events.json?";
+function fixTime(time,startDate){
+    console.log(time);
+    var dateTime = time.split("-");
+    var year = dateTime[0];
+    var month = dateTime[1];
+    var day = dateTime[2];
+    var time = "";
+    if(month < 10){
+        month = "0"+month;
+    }
+    if(day < 10){
+        day = "0"+day;
+    }
+    if(startDate){
+        time ="T00:00:00Z";
+    }
+    if(!startDate){
+        time ="T23:59:00Z";
+    }
+    return year+"-"+month+"-"+day+time;
+}
 
-    countryQueryUrl = countryQueryUrl + "countryCode=" + country + query;
+function searchApi(city,country,priceFrom,priceTo,dateFrom,dateTo) {
+    var toGo = "";
+    var countryQueryUrl = "https://app.ticketmaster.com/discovery/v2/events.json?";
+    if(city != null){
+        toGo = city;
+        countryQueryUrl += "city=" + city;
+    }
+    else{
+        toGo = country;
+        countryQueryUrl += "countryCode=" + country;
+    }
+    if(priceFrom != null){
+        countryQueryUrl += "&priceFrom=" + priceFrom;
+    }
+    if(priceTo != null){
+        countryQueryUrl += "&priceTo=" + priceTo;
+    }
+    if(dateFrom != null){  
+        console.log(fixTime(dateFrom,true));
+        countryQueryUrl += "&startDateTime=" + fixTime(dateFrom,true);
+    }
+    if(dateTo != null){
+        console.log(fixTime(dateTo,false));
+        countryQueryUrl += "&endDateTime=" + fixTime(dateTo,false);
+    }
+
+    countryQueryUrl += query;
+    console.log(countryQueryUrl);
+
 
     fetch(countryQueryUrl)
         .then(function(response) {
@@ -294,24 +353,27 @@ function searchApi(country) {
             return response.json();
         })
         .then(function(data) {
-            console.log(data, country);
-            if (!data._embedded.events.length) {
+            console.log(data, toGo);
+            if (data._embedded == "" || data._embedded == null ) {
+                alert("Checked");
                 var noResultsMessage = $("<p></p>").addClass("no-result-message").text("No events to list.");
                 $("#activities-list").append(noResultsMessage);
-            } else {
+            }
+            else {
+                console.log(data._embedded);
                 for (var i = 0; i < data._embedded.events.length; i++) {
-                    displayCountryEvents(data._embedded.events[i], country);
+                    displayCountryEvents(data._embedded.events[i], toGo);
                 }
             }
         })
         .catch(function(error) {
-            console.error(error);
+            console.log(error);
         })
 }
 
-function displayCountryEvents(events, country) {
+function displayCountryEvents(events, toGo) {
     console.log(events);
-    $("#country-selected").text(country);
+    $("#country-selected").text(toGo);
     var activityCard = $("<div></div>").addClass("card card-content activity-card")
     var activityName = $("<p></p>").addClass("activity-title").text(events.name);
     var selectActivityButton = $("<a></a>").addClass("btn-floating halfway-fab waves-effect waves-light select-activity").html("<i class='material-icons'>add</i>");
@@ -319,7 +381,7 @@ function displayCountryEvents(events, country) {
     if (!events.priceRanges) {
         var activityCosts = $("<p></p>").addClass("activity-info").attr("id", "activity-cost").text("Cost: No cost listed. Check events website for cost information.");
     } else {
-        var activityCosts = $("<p></p>").addClass("activity-info").attr("id", "activity-cost").text("Cost: " + country + "$" + events.priceRanges[0].min + "- " + country + "$" + events.priceRanges[0].max);
+        var activityCosts = $("<p></p>").addClass("activity-info").attr("id", "activity-cost").text("Cost: " + toGo + "$" + events.priceRanges[0].min + "- " + toGo + "$" + events.priceRanges[0].max);
     }
     var activityLink = $("<a></a>").addClass("activity-info event-link").attr("href", events.url).attr("target", "_blank").text("Click here for more event information");
     activityCard.append(activityName, selectActivityButton, activityDate, activityCosts,activityLink);
@@ -437,7 +499,7 @@ function displayCountryEvents(events, country) {
             DateOrNot = false;
             return;
         }
-        if(((selecteDate.getFullYear >= currentDate.getFullYear) && (selecteDate.getMonth >= currentDate.getMonth) && (selecteDate.getDay >= currentDate.getDay)) && ((endDate.getFullYear >= selecteDate.getFullYear) && (endDate.getMonth >= selecteDate.getMonth) && (endDate.getDay >= selecteDate.getDay))){
+        if(((selecteDate.getFullYear >= currentDate.getFullYear) && (selecteDate.getMonth >= currentDate.getMonth) && (selecteDate.getDate >= currentDate.getDate)) && ((endDate.getFullYear >= selecteDate.getFullYear) && (endDate.getMonth >= selecteDate.getMonth) && (endDate.getDate >= selecteDate.getDate))){
             search_button.prop('disabled', false);
             DateOrNot = true;
         }
@@ -472,7 +534,7 @@ function displayCountryEvents(events, country) {
             DateOrNot = false;
             return;
         }
-        if(((selecteDate.getFullYear >= currentDate.getFullYear) && (selecteDate.getMonth >= currentDate.getMonth) && (selecteDate.getDay >= currentDate.getDay)) && ((startDate.getFullYear <= selecteDate.getFullYear) && (startDate.getMonth <= selecteDate.getMonth) && (startDate.getDay <= selecteDate.getDay))){
+        if(((selecteDate.getFullYear >= currentDate.getFullYear) && (selecteDate.getMonth >= currentDate.getMonth) && (selecteDate.getDate >= currentDate.getDate)) && ((startDate.getFullYear <= selecteDate.getFullYear) && (startDate.getMonth <= selecteDate.getMonth) && (startDate.getDate <= selecteDate.getDate))){
             search_button.prop('disabled', false);
             DateOrNot = true;
             
@@ -540,7 +602,7 @@ function displayCountryEvents(events, country) {
                                 directUrl += "&priceFrom="+$("#priceFrom").val()+"&priceTo="+$("#priceTo").val();
                             }
                             if(DateOrNot){
-                                directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDay()+"&endDateTime=" + endDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDay();
+                                directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDate()+"&endDateTime=" + endDate.getFullYear()+"-"+endDate.getMonth()+"-"+endDate.getDate();
 
                             }
                             window.location.href = directUrl;
@@ -576,7 +638,7 @@ function displayCountryEvents(events, country) {
                             directUrl += "&priceFrom="+$("#priceFrom").val()+"&priceTo="+$("#priceTo").val();
                         }
                         if(DateOrNot){
-                            directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDay()+"&endDateTime=" + endDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDay();
+                            directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDate()+"&endDateTime=" + endDate.getFullYear()+"-"+endDate.getMonth()+"-"+endDate.getDate();
                         }
 
                         window.location.href = directUrl;
