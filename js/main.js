@@ -365,10 +365,7 @@ $(document).ready(function(){
         var checkDate = Date.parse(currentDate) || 0;
         debugger;
         if(checkDate == 0){
-            DateOrNot = false;
-            return;
-        }
-        if(checkDate == 0){
+            search_button.prop('disabled', false);
             DateOrNot = false;
             return;
         }
@@ -381,12 +378,17 @@ $(document).ready(function(){
                 if((selecteDate.getDate() >= currentDate.getDate())) {
                     search_button.prop('disabled', false);
                     DateOrNot = true;
+                }
+                else{
+                    search_button.prop('disabled', true);
+                    DateOrNot = false;
                     alert(alertMessage);
                 }
             }
             else{
                 search_button.prop('disabled', true);
                 DateOrNot = false;
+                alert(alertMessage);
             }
 
         }
