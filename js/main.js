@@ -285,8 +285,15 @@ $(document).ready(function(){
                 $("#countryText").val("");
                 $("#cityText").prop('disabled', false);
                 console.log("pass1");
-                alert("There are no search results for this.");
-                alert("Please Check your query parameters.");
+                // alert("There are no search results for this.");
+                // alert("Please Check your query parameters.");
+                var alertMessage = "There are no search results for this. Please Check your query parameters.";
+                var errorMessage = $("<p></p>").addClass("error-date").text(alertMessage);
+                $("#countrySearch").append(errorMessage);
+                setTimeout(function () {
+                    $(".error-date").remove();
+                }, 2000);
+                
             }
         }
         //if city is the search parameter
@@ -363,6 +370,7 @@ $(document).ready(function(){
         currentDate = new Date(currentDate);
         console.log(currentDate);
         var checkDate = Date.parse(currentDate) || 0;
+        var errorMessage = $("<p></p>").addClass("error-date").text(alertMessage);
         debugger;
         if(checkDate == 0){
             search_button.prop('disabled', false);
@@ -382,13 +390,19 @@ $(document).ready(function(){
                 else{
                     search_button.prop('disabled', true);
                     DateOrNot = false;
-                    alert(alertMessage);
+                    $("#datesearch").append(errorMessage);
+                    setTimeout(function () {
+                        $(".error-date").remove();
+                    }, 2000);
                 }
             }
             else{
                 search_button.prop('disabled', true);
                 DateOrNot = false;
-                alert(alertMessage);
+                $("#datesearch").append(errorMessage);
+                setTimeout(function () {
+                    $(".error-date").remove();
+                }, 2000);
             }
 
         }
@@ -399,7 +413,10 @@ $(document).ready(function(){
         else{
             search_button.prop('disabled', true);
             DateOrNot = false;
-            alert(alertMessage);
+            $("#datesearch").append(errorMessage);
+            setTimeout(function () {
+                $(".error-date").remove();
+            }, 2000);
         }
         
 
@@ -471,8 +488,13 @@ $(document).ready(function(){
                             $("#countryText").val("");
                             $("#cityText").prop('disabled', false);
                             console.log("pass2");
-                            alert("There are no search results for this.");
-                            alert("Please Check your query parameters.");
+                            var alertMessage = "There are no search results for this. Please Check your query parameters.";
+                            var errorMessage = $("<p></p>").addClass("error-date").text(alertMessage);
+                            $("#countrySearch").append(errorMessage);
+                            setTimeout(function () {
+                                $(".error-date").remove();
+                            }, 2000);
+
                         }
                 }
             });
@@ -502,10 +524,12 @@ $(document).ready(function(){
                         window.location.href = directUrl;
                     }
                     else{
-                        $("#cityText").val("");
-                        $("#countryText").prop('disabled', false);
-                        alert("There are no search results for this.");
-                        alert("Please Check your query parameters.");
+                        var alertMessage = "There are no search results for this. Please Check your query parameters.";
+                        var errorMessage = $("<p></p>").addClass("error-date").text(alertMessage);
+                        $("#citysearch").append(errorMessage);
+                        setTimeout(function () {
+                            $(".error-date").remove();
+                        }, 2000);
                     }
                 }
             });
