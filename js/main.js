@@ -2,7 +2,6 @@ $(document).ready(function(){
     $(".dropdown-trigger").dropdown();
     $("#countryText").val("");
     $("#cityText").val("");
-    $("#end-date").val("");
     $("#start-date").val("");
     //List of Countries with ISO code
     var isoCountries = {
@@ -363,20 +362,13 @@ $(document).ready(function(){
         var currentDate = moment().format('ll');
         currentDate = new Date(currentDate);
         console.log(currentDate);
-        var endDate = $("#end-date").val();
-        endDate = new Date(endDate);
-        console.log(endDate);
-        if(selecteDate == "" && $("#start-date").val() == ""){
-            search_button.prop('disabled', false);
+        var checkDate = Date.parse(currentDate) || 0;
+        debugger;
+        if(checkDate == 0){
             DateOrNot = false;
             return;
         }
-        if($("#end-date").val() == ""){
-            search_button.prop('disabled', true);
-            DateOrNot = false;
-            return;
-        }
-        if(((selecteDate.getFullYear >= currentDate.getFullYear) && (selecteDate.getMonth >= currentDate.getMonth) && (selecteDate.getDay >= currentDate.getDay)) && ((endDate.getFullYear >= selecteDate.getFullYear) && (endDate.getMonth >= selecteDate.getMonth) && (endDate.getDay >= selecteDate.getDay))){
+        if((selecteDate.getFullYear() >= currentDate.getFullYear()) && (selecteDate.getMonth() >= currentDate.getMonth()) && (selecteDate.getDate() >= currentDate.getDate())){
             search_button.prop('disabled', false);
             DateOrNot = true;
         }
@@ -389,42 +381,6 @@ $(document).ready(function(){
 
     });
 
-
-    $("#end-date").change(function(e){
-        var alertMessage = "End date can't be earlier than start date or current date";
-        var selecteDate =  $("#end-date").val();
-        selecteDate = new Date(selecteDate);
-        console.log(selecteDate);
-        var currentDate = moment().format('ll');
-        currentDate = new Date(currentDate);
-        console.log(currentDate);
-        var startDate = $("#start-date").val();
-        startDate = new Date(startDate);
-        console.log(startDate);
-        if(selecteDate == "" && $("#start-date").val() == ""){
-            search_button.prop('disabled', false);
-            DateOrNot = false;
-            return;
-        }
-        if($("#start-date").val() == ""){
-            search_button.prop('disabled', true);
-            DateOrNot = false;
-            return;
-        }
-        if(((selecteDate.getFullYear >= currentDate.getFullYear) && (selecteDate.getMonth >= currentDate.getMonth) && (selecteDate.getDay >= currentDate.getDay)) && ((startDate.getFullYear <= selecteDate.getFullYear) && (startDate.getMonth <= selecteDate.getMonth) && (startDate.getDay <= selecteDate.getDay))){
-            search_button.prop('disabled', false);
-            DateOrNot = true;
-            
-        }
-        else{
-            search_button.prop('disabled', true);
-            DateOrNot = false;
-            alert(alertMessage);
-
-        }
-        
-
-    });
 
 
 
@@ -472,14 +428,13 @@ $(document).ready(function(){
                         if(response._embedded != "" && response._embedded != null){
                             var directUrl = "./search.html?countryCode="+getCountryName(search_text);
                             var startDate = new Date($("#start-date").val());
-                            var endDate = new Date($("#end-date").val());
                             console.log("pass");
                             console.log(response._embedded);
                             if(priceRangeOrNot){
                                 directUrl += "&priceFrom="+$("#priceFrom").val()+"&priceTo="+$("#priceTo").val();
                             }
                             if(DateOrNot){
-                                directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDay()+"&endDateTime=" + endDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDay();
+                                directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDate();
 
                             }
                             window.location.href = directUrl;
@@ -505,14 +460,13 @@ $(document).ready(function(){
                     if(response._embedded != "" && response._embedded != null){
                         var directUrl = "./search.html?city=" +search_text;
                         var startDate = new Date($("#start-date").val());
-                        var endDate = new Date($("#end-date").val());
                         console.log("pass");
                         console.log(response._embedded);
                         if(priceRangeOrNot){
                             directUrl += "&priceFrom="+$("#priceFrom").val()+"&priceTo="+$("#priceTo").val();
                         }
                         if(DateOrNot){
-                            directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDay()+"&endDateTime=" + endDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDay();
+                            directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDate();
                         }
 
                         window.location.href = directUrl;
