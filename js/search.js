@@ -286,35 +286,27 @@ function getParams() {
     console.log(priceTo);
     var dateFrom = urlParams.get("startDateTime");
     console.log(dateFrom);
-    var dateTo = urlParams.get("endDateTime");
-    console.log(dateTo);
-    searchApi(city,country,priceFrom,priceTo,dateFrom,dateTo);
+    searchApi(city,country,priceFrom,priceTo,dateFrom);
 
 }
 
-function fixTime(time,startDate){
+function fixTime(time){
     console.log(time);
     var dateTime = time.split("-");
     var year = dateTime[0];
     var month = dateTime[1];
     var day = dateTime[2];
-    var time = "";
+    var time ="T00:00:00Z";
     if(month < 10){
         month = "0"+month;
     }
     if(day < 10){
         day = "0"+day;
     }
-    if(startDate){
-        time ="T00:00:00Z";
-    }
-    if(!startDate){
-        time ="T23:59:00Z";
-    }
     return year+"-"+month+"-"+day+time;
 }
 
-function searchApi(city,country,priceFrom,priceTo,dateFrom,dateTo) {
+function searchApi(city,country,priceFrom,priceTo,dateFrom) {
     var toGo = "";
     var countryQueryUrl = "https://app.ticketmaster.com/discovery/v2/events.json?";
     if(city != null){
@@ -332,12 +324,7 @@ function searchApi(city,country,priceFrom,priceTo,dateFrom,dateTo) {
         countryQueryUrl += "&priceTo=" + priceTo;
     }
     if(dateFrom != null){  
-        console.log(fixTime(dateFrom,true));
-        countryQueryUrl += "&startDateTime=" + fixTime(dateFrom,true);
-    }
-    if(dateTo != null){
-        console.log(fixTime(dateTo,false));
-        countryQueryUrl += "&endDateTime=" + fixTime(dateTo,false);
+        countryQueryUrl += "&startDateTime=" + fixTime(dateFrom);
     }
 
     countryQueryUrl += query;
@@ -362,7 +349,7 @@ function searchApi(city,country,priceFrom,priceTo,dateFrom,dateTo) {
             else {
                 console.log(data._embedded);
                 for (var i = 0; i < data._embedded.events.length; i++) {
-                    displayCountryEvents(data._embedded.events[i], toGo);
+                    displayCountryEvents(data._embedded.events[i], toGo, i);
                 }
             }
         })
@@ -371,21 +358,38 @@ function searchApi(city,country,priceFrom,priceTo,dateFrom,dateTo) {
         })
 }
 
-function displayCountryEvents(events, toGo) {
+function displayCountryEvents(events, toGo, index) {
     console.log(events);
     $("#country-selected").text(toGo);
     var activityCard = $("<div></div>").addClass("card card-content activity-card")
     var activityName = $("<p></p>").addClass("activity-title").text(events.name);
     var selectActivityButton = $("<a></a>").addClass("btn-floating halfway-fab waves-effect waves-light select-activity").html("<i class='material-icons'>add</i>");
+    var selectActivityButtonID = "card"+index;
+    selectActivityButton.attr("id",selectActivityButtonID);
     var activityDate = $("<p></p>").addClass("activity-info").attr("id", "activity-date").text("Date: " + events.dates.start.localDate);
-    if (!events.priceRanges) {
-        var activityCosts = $("<p></p>").addClass("activity-info").attr("id", "activity-cost").text("Cost: No cost listed. Check events website for cost information.");
-    } else {
-        var activityCosts = $("<p></p>").addClass("activity-info").attr("id", "activity-cost").text("Cost: " + toGo + "$" + events.priceRanges[0].min + "- " + toGo + "$" + events.priceRanges[0].max);
-    }
+    var activityCosts = !events.priceRanges ? $("<p></p>").addClass("activity-info").attr("id", "activity-cost").text("Cost: No cost listed. Check events website for cost information.") : $("<p></p>").addClass("activity-info").attr("id", "activity-cost").text("Cost: " + toGo + "$" + events.priceRanges[0].min + "- " + toGo + "$" + events.priceRanges[0].max);
     var activityLink = $("<a></a>").addClass("activity-info event-link").attr("href", events.url).attr("target", "_blank").text("Click here for more event information");
     activityCard.append(activityName, selectActivityButton, activityDate, activityCosts,activityLink);
     $("#activities-list").append(activityCard);
+    selectActivityButton.click(function (e) { 
+        e.preventDefault();
+        e.stopPropagation();
+        var itemList = localStorage.getItem("list");
+        itemList = JSON.parse(itemList);
+        var name = activityName.text();
+        var cost = activityCosts.text();
+        var date = activityDate.text();
+        var link = activityLink.text();
+        if(itemList == null){
+            var list = new Array();
+            list.push({"name":name,"cost":cost,"date":date,"link":link});
+            localStorage.setItem("list",JSON.stringify(list));
+        }
+        else{
+            itemList.push({"name":name,"cost":cost,"date":date,"link":link});
+            localStorage.setItem("list",JSON.stringify(itemList));
+        }
+    });
 }
 
 
@@ -486,20 +490,31 @@ function displayCountryEvents(events, toGo) {
         var currentDate = moment().format('ll');
         currentDate = new Date(currentDate);
         console.log(currentDate);
-        var endDate = $("#end-date").val();
-        endDate = new Date(endDate);
-        console.log(endDate);
-        if(selecteDate == "" && $("#start-date").val() == ""){
-            search_button.prop('disabled', false);
+        var checkDate = Date.parse(currentDate) || 0;
+        debugger;
+        if(checkDate == 0){
             DateOrNot = false;
             return;
         }
-        if($("#end-date").val() == ""){
-            search_button.prop('disabled', true);
-            DateOrNot = false;
-            return;
+        if(selecteDate.getFullYear() == currentDate.getFullYear() ){
+            if(selecteDate.getMonth() > currentDate.getMonth()){
+                search_button.prop('disabled', false);
+                DateOrNot = true;
+            }
+            else if(selecteDate.getMonth() == currentDate.getMonth()) {
+                if((selecteDate.getDate() >= currentDate.getDate())) {
+                    search_button.prop('disabled', false);
+                    DateOrNot = true;
+                    alert(alertMessage);
+                }
+            }
+            else{
+                search_button.prop('disabled', true);
+                DateOrNot = false;
+            }
+
         }
-        if(((selecteDate.getFullYear >= currentDate.getFullYear) && (selecteDate.getMonth >= currentDate.getMonth) && (selecteDate.getDate >= currentDate.getDate)) && ((endDate.getFullYear >= selecteDate.getFullYear) && (endDate.getMonth >= selecteDate.getMonth) && (endDate.getDate >= selecteDate.getDate))){
+        else if(selecteDate.getFullYear() > currentDate.getFullYear()){
             search_button.prop('disabled', false);
             DateOrNot = true;
         }
@@ -511,45 +526,6 @@ function displayCountryEvents(events, toGo) {
         
 
     });
-
-
-    $("#end-date").change(function(e){
-        var alertMessage = "End date can't be earlier than start date or current date";
-        var selecteDate =  $("#end-date").val();
-        selecteDate = new Date(selecteDate);
-        console.log(selecteDate);
-        var currentDate = moment().format('ll');
-        currentDate = new Date(currentDate);
-        console.log(currentDate);
-        var startDate = $("#start-date").val();
-        startDate = new Date(startDate);
-        console.log(startDate);
-        if(selecteDate == "" && $("#start-date").val() == ""){
-            search_button.prop('disabled', false);
-            DateOrNot = false;
-            return;
-        }
-        if($("#start-date").val() == ""){
-            search_button.prop('disabled', true);
-            DateOrNot = false;
-            return;
-        }
-        if(((selecteDate.getFullYear >= currentDate.getFullYear) && (selecteDate.getMonth >= currentDate.getMonth) && (selecteDate.getDate >= currentDate.getDate)) && ((startDate.getFullYear <= selecteDate.getFullYear) && (startDate.getMonth <= selecteDate.getMonth) && (startDate.getDate <= selecteDate.getDate))){
-            search_button.prop('disabled', false);
-            DateOrNot = true;
-            
-        }
-        else{
-            search_button.prop('disabled', true);
-            DateOrNot = false;
-            alert(alertMessage);
-
-        }
-        
-
-    });
-
-
 
     //eventlistener of country text search change
     $("#countryText").change(async function (e) { 
@@ -576,10 +552,7 @@ function displayCountryEvents(events, toGo) {
             return;
         }
         $("#countryText").prop('disabled', true);
-        countryOrNot = false;
-
-
-        
+        countryOrNot = false;        
     });
 
 
@@ -595,14 +568,17 @@ function displayCountryEvents(events, toGo) {
                         if(response._embedded != "" && response._embedded != null){
                             var directUrl = "./search.html?countryCode="+getCountryName(search_text);
                             var startDate = new Date($("#start-date").val());
-                            var endDate = new Date($("#end-date").val());
+
+                            debugger;
                             console.log("pass");
                             console.log(response._embedded);
                             if(priceRangeOrNot){
                                 directUrl += "&priceFrom="+$("#priceFrom").val()+"&priceTo="+$("#priceTo").val();
                             }
                             if(DateOrNot){
-                                directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDate()+"&endDateTime=" + endDate.getFullYear()+"-"+endDate.getMonth()+"-"+endDate.getDate();
+                                var month = startDate.getMonth();
+                                month = parseInt(month)+1;
+                                directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+month+"-"+startDate.getDate();
 
                             }
                             window.location.href = directUrl;
@@ -631,14 +607,15 @@ function displayCountryEvents(events, toGo) {
                     if(response._embedded != "" && response._embedded != null){
                         var directUrl = "./search.html?city=" +search_text;
                         var startDate = new Date($("#start-date").val());
-                        var endDate = new Date($("#end-date").val());
                         console.log("pass");
                         console.log(response._embedded);
                         if(priceRangeOrNot){
                             directUrl += "&priceFrom="+$("#priceFrom").val()+"&priceTo="+$("#priceTo").val();
                         }
                         if(DateOrNot){
-                            directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDate()+"&endDateTime=" + endDate.getFullYear()+"-"+endDate.getMonth()+"-"+endDate.getDate();
+                            var month = startDate.getMonth();
+                            month = parseInt(month)+1;
+                            directUrl += "&startDateTime=" + startDate.getFullYear()+"-"+month+"-"+startDate.getDate();
                         }
 
                         window.location.href = directUrl;
