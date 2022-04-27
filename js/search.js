@@ -359,7 +359,6 @@ function searchApi(city,country,priceFrom,priceTo,dateFrom) {
 
 function displayCountryEvents(events, toGo, index) {
     console.log(events);
-    $("#country-selected").text(toGo);
     var activityCard = $("<div></div>").addClass("card card-content activity-card")
     var activityName = $("<p></p>").addClass("activity-title").text(events.name);
     var selectActivityButton = $("<a></a>").addClass("btn-floating halfway-fab waves-effect waves-light select-activity").html("<i class='material-icons'>add</i>");
