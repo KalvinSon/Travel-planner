@@ -6,7 +6,6 @@ $(document).ready(function () {
     loadCards();
    
     async function loadCards(){
-        var array = new Array();
         var totalAvg = 0;
         for (let index = list.length-1; index > -1; index--) {
             var tempAvg;
@@ -30,10 +29,15 @@ $(document).ready(function () {
                 tempAvg = avgPri;
 
             }
-            var card = $("<div/>").attr("class","card card-content activity-card");
+            var card = $("<div/>").attr("class","card card-content activity-card").attr("id","card"+index);
             activities_list.append(card);
             var activity_title = $("<p/>").attr("class","activity-title").text(name);
             card.append(activity_title);
+            var minus_btn = $("<a/>").attr("class","btn-floating del-btn halfway-fab waves-effect waves-light select-activity").html("<i class='material-icons'>minus</i>");
+            minus_btn.attr("id","btn"+index);
+            minus_btn.attr("data-value",cost);
+            
+            card.append(minus_btn);
             var date_info = $("<p/>").attr("class","activity-info").text(date);
             card.append(date_info);
             var cost_info = $("<p/>").attr("class","activity-info").text(cost);
@@ -49,19 +53,33 @@ $(document).ready(function () {
                     dataType: "JSON",
                     success: function (response) {
                        var conRate = response.conversion_rates.AUD;
-                       console.log("Avg price: "+ tempAvg);
-                       console.log("conversation rate: "+conRate);
-                       totalAvg= totalAvg + conRate*tempAvg;   
-                       console.log("Total Avg: "+totalAvg);
-                       array.push(totalAvg);
+                       totalAvg = totalAvg + conRate*tempAvg;   
+                       tempAvg = conRate*tempAvg;
+                       minus_btn.attr("data-cost",tempAvg);
+                       console.log("Total Avg: "+tempAvg);
                     }
                 });
             }
-            else{
-                array.push(null);
-            }
+            minus_btn.click(function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const row = index;
+                const errorText = "Cost: No cost listed. Check events website for cost information.";
+                var currentList = localStorage.getItem("list");
+                currentList = JSON.parse(currentList);
+                currentList.splice(row,1);
+                console.log($(`#btn${row}`).attr("data-value"));
+                localStorage.setItem("list",JSON.stringify(currentList));
+                if($(`#btn${row}`).attr("data-value") != errorText){
+                   var text = $(".total-budget-number").text();
+                   var end = text.indexOf("(");
+                   text = (parseFloat(text.substring(1,end)) - parseFloat($(`#btn${row}`).attr("data-cost"))) < 0 ?  0: parseFloat(text.substring(1,end)) - parseFloat($(`#btn${row}`).attr("data-cost")) ;
+                   $(".total-budget-number").text("$"+text.toFixed(2)+"(AUD)");
+                   console.log(text);
+                }
+                $(`#card${row}`).remove();
+            });
             
-
         }
         $(".total-budget-number").text($(".total-budget-number").text()+totalAvg.toFixed(2)+"(AUD)");
         $(".travel").attr("style","display:block");
