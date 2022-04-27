@@ -29,12 +29,12 @@ The project task here is to build a travel planner to plan the travellers' activ
 Enter the destination in the form input for country or city, price and start date and click Submit.
    
 
-![alt text](images/Image14.png)
+![alt text](images/image14.png)
        
 #### <em>List of Activities or Events</em> 
 This bring on the list of activities or events in which the user can view the event information by clicking the link.
 
-![alt text](images/Image015.png)
+![alt text](images/image15.png)
 
 The layout is also responsive and caters for mobile, tablets and desktop. 
 
@@ -51,7 +51,7 @@ The URL of the functional, deployed application is :-
 https://chardige.github.io/Travel-planner/
 
 
-## PROJECT PRESENTATION
 
-https://uadel-fsf-feb-2022.slack.com/archives/C03B4LKRMFU/p1650977362285389
+
+
 
