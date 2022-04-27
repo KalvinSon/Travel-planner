@@ -342,7 +342,6 @@ function searchApi(city,country,priceFrom,priceTo,dateFrom) {
         .then(function(data) {
             console.log(data, toGo);
             if (data._embedded == "" || data._embedded == null ) {
-                alert("Checked");
                 var noResultsMessage = $("<p></p>").addClass("no-result-message").text("No events to list.");
                 $("#activities-list").append(noResultsMessage);
             }
@@ -380,8 +379,6 @@ function displayCountryEvents(events, toGo, index) {
         var cost = activityCosts.text();
         var date = activityDate.text();
         var link = activityLink.attr("href");
-        // var errorMessage = $("<p></p>").addClass("error-message").text("There are no search results for this. Please try again");
-        //         $("#countrySearch").append(errorMessage);
 
         if(itemList == null){
             $("#budget-mo").attr('href','budgetlist.html');
@@ -484,6 +481,7 @@ function displayCountryEvents(events, toGo, index) {
                 priceRangeOrNot = true;
 
             }
+            
         }
     });
 
@@ -496,6 +494,7 @@ function displayCountryEvents(events, toGo, index) {
         currentDate = new Date(currentDate);
         console.log(currentDate);
         var checkDate = Date.parse(currentDate) || 0;
+        var errorMessage = $("<p></p>").addClass("error-date").text(alertMessage);
         debugger;
         if(checkDate == 0){
             search_button.prop('disabled', false);
@@ -516,13 +515,20 @@ function displayCountryEvents(events, toGo, index) {
                 else{
                     search_button.prop('disabled', true);
                     DateOrNot = false;
-                    alert(alertMessage);
+                    $("#countrySearch").append(errorMessage);
+                    setTimeout(function () {
+                        $(".error-date").remove();
+                    }, 2000);
+                    
                 }
             }
             else{
                 search_button.prop('disabled', true);
                 DateOrNot = false;
-                alert(alertMessage);
+                $("#countrySearch").append(errorMessage);
+                setTimeout(function () {
+                    $(".error-date").remove();
+                }, 2000);
             }
 
         }
@@ -533,7 +539,10 @@ function displayCountryEvents(events, toGo, index) {
         else{
             search_button.prop('disabled', true);
             DateOrNot = false;
-            alert(alertMessage);
+            $("#countrySearch").append(errorMessage);
+            setTimeout(function () {
+                $(".error-date").remove();
+            }, 2000);
         }
         
 
