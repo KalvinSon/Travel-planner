@@ -366,7 +366,7 @@ function displayCountryEvents(events, toGo, index) {
     var selectActivityButtonID = "card"+index;
     selectActivityButton.attr("id",selectActivityButtonID);
     var activityDate = $("<p></p>").addClass("activity-info").attr("id", "activity-date").text("Date: " + events.dates.start.localDate);
-    var activityCosts = !events.priceRanges ? $("<p></p>").addClass("activity-info").attr("id", "activity-cost").text("Cost: No cost listed. Check events website for cost information.") : $("<p></p>").addClass("activity-info").attr("id", "activity-cost").text("Cost: " + toGo + "$" + events.priceRanges[0].min + "- " + toGo + "$" + events.priceRanges[0].max);
+    var activityCosts = !events.priceRanges ? $("<p></p>").addClass("activity-info").attr("id", "activity-cost").text("Cost: No cost listed. Check events website for cost information.") : $("<p></p>").addClass("activity-info").attr("id", "activity-cost").text("Cost: " + events.priceRanges[0].currency + "$" + events.priceRanges[0].min + "- " + events.priceRanges[0].currency + "$" + events.priceRanges[0].max);
     var activityLink = $("<a></a>").addClass("activity-info event-link").attr("href", events.url).attr("target", "_blank").text("Click here for more event information");
     activityCard.append(activityName, selectActivityButton, activityDate, activityCosts,activityLink);
     $("#activities-list").append(activityCard);
