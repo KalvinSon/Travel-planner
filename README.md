@@ -21,6 +21,7 @@ The project task here is to build a travel planner to plan the travellers' activ
 * JQuery
 * The Fetch API
 
+
 ## PROCESS
 
  The below screenshots show the process the users would go through to see the list of activities at a destination and plan their budget. 
@@ -35,6 +36,11 @@ Enter the destination in the form input for country or city, price and start dat
 This bring on the list of activities or events in which the user can view the event information by clicking the link.
 
 ![alt text](images/image15.png)
+
+#### <em>Saved Activities</em>
+The activities from the search results are saved in the budget list by the click of the button on the right hand side of the page and the user also have the ability to remove the activity by clicking on the button at the side.
+
+![alt text](images/image16.png)
 
 The layout is also responsive and caters for mobile, tablets and desktop. 
 
