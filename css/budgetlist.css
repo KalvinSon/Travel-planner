@@ -121,6 +121,10 @@ nav .brand-logo {
     margin: 10px;
 }
 
+.drop-list {
+    width:25%;
+}
+
 
 /*4. Responsiveness */
  @media screen and (max-width: 670px) { 
@@ -138,6 +142,9 @@ nav .brand-logo {
    }
    .header {
        min-height: 500px;
+   }
+   .drop-list {
+       width:50%;
    }
  }
 @media screen and (min-width: 671px) { 
