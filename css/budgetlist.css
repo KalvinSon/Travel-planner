@@ -121,8 +121,30 @@ nav .brand-logo {
     margin: 10px;
 }
 
+/* Currency converter styling */
+form {
+    margin: 10px;
+}
+
 .drop-list {
-    width:25%;
+    color: #000;
+}
+
+#exchange-btn {
+    margin-top: 20px;
+}
+
+#exchange-btn:hover {
+    background-color: #000;
+}
+
+#form-text {
+    font-size: 20px;
+}
+
+.exchange-rate {
+    color: #000;
+    font-size: 20px;
 }
 
 
@@ -143,9 +165,7 @@ nav .brand-logo {
    .header {
        min-height: 500px;
    }
-   .drop-list {
-       width:50%;
-   }
+
  }
 @media screen and (min-width: 671px) { 
     .content {
